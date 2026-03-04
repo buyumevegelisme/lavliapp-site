@@ -1,190 +1,277 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Lavli Gebelik Rehberi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<link rel="icon" type="image/png" href="https://i.hizliresim.com/b9pkx8v.png?v=3">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Lavli | Gebelik Rehberi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <link rel="icon" type="image/png" href="https://i.hizliresim.com/b9pkx8v.png?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-html, body {
-  margin:0;
-  padding:0;
-  width:100%;
-  min-height:100%;
-  font-family:'Inter', sans-serif;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 40%, #a18cd1 70%, #7028e4 100%);
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  flex-direction:column;
-}
+    <style>
+        :root {
+            --primary-grad: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 40%, #a18cd1 70%, #7028e4 100%);
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --text-dark: #2d3436;
+            --accent-color: #7028e4;
+        }
 
-.container {
-  width:90%;
-  max-width:420px;
-  margin:20px auto;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  color:#333;
-}
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-h1 {
-  font-size:28px;
-  font-weight:700;
-  color:#fff;
-  text-align:center;
-  margin-bottom:8px;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--primary-grad);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-dark);
+        }
 
-h2 {
-  font-size:20px;
-  font-weight:600;
-  color:#fff;
-  text-align:center;
-  margin-bottom:20px;
-}
+        .main-card {
+            width: 92%;
+            max-width: 480px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            margin: 20px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
 
-.disclaimer {
-  font-size:12px;
-  color:#fff;
-  text-align:center;
-  margin:10px 0;
-  line-height:1.4;
-  font-weight:500;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.select-wrapper {
-  width:100%;
-  margin-bottom:20px;
-}
+        .logo-area {
+            margin-bottom: 25px;
+        }
 
-select {
-  width:100%;
-  padding:15px;
-  font-size:16px;
-  border-radius:18px;
-  border:none;
-  outline:none;
-  background:rgba(255,255,255,0.95);
-  box-shadow:0 6px 20px rgba(0,0,0,0.2);
-  appearance:none;
-  -webkit-appearance:none;
-  text-align:center;
-  font-weight:600;
-  color:#333;
-  cursor:pointer;
-}
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(90deg, #7028e4, #a18cd1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
 
-button {
-  padding:15px;
-  width:100%;
-  font-size:16px;
-  font-weight:700;
-  border-radius:18px;
-  border:none;
-  background:#7028e4;
-  color:#fff;
-  cursor:pointer;
-  box-shadow:0 6px 20px rgba(0,0,0,0.25);
-  transition:0.3s;
-}
+        p.subtitle {
+            font-size: 15px;
+            color: #636e72;
+            margin-top: 8px;
+            font-weight: 500;
+        }
 
-button:hover {
-  background:#5a1fc8;
-}
+        .selection-container {
+            margin: 30px 0;
+            width: 100%;
+        }
 
-.guide-card {
-  width:100%;
-  background:rgba(255,255,255,0.95);
-  border-radius:25px;
-  padding:20px;
-  margin-top:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-  line-height:1.5;
-  color:#333;
-  font-weight:500;
-  text-align:left;
-  white-space:pre-line;
-}
+        .custom-select-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
 
-.download-section {
-  margin-top:20px;
-  width:100%;
-  text-align:center;
-}
+        select {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 2px solid #f0f0f0;
+            background-color: #fff;
+            color: var(--text-dark);
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align-last: center; /* Seçenekleri ortalar */
+        }
 
-.download-section p {
-  margin-bottom:10px;
-  font-size:14px;
-  color:#fff;
-  font-weight:600;
-}
+        select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(112, 40, 228, 0.1);
+        }
 
-.download-section button {
-  width:60%;
-  margin:0 auto;
-}
+        .btn-primary {
+            width: 100%;
+            padding: 18px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 20px;
+            border: none;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(112, 40, 228, 0.2);
+        }
 
-</style>
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(112, 40, 228, 0.3);
+            background: #5a1fc8;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .guide-display-area {
+            margin-top: 30px;
+            padding: 25px;
+            background: #fcfaff;
+            border-radius: 24px;
+            border: 1px dashed #d1c4e9;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .guide-content {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #444;
+            text-align: center; /* Tıbbi metinler artık ortalı */
+            white-space: pre-line;
+        }
+
+        .download-footer {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .download-footer p {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #888;
+        }
+
+        .btn-download {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 30px;
+            background: #000;
+            color: #fff;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            opacity: 0.8;
+        }
+
+        .legal-disclaimer {
+            max-width: 480px;
+            margin: 20px auto;
+            font-size: 11px;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        /* Mobil Optimizasyon */
+        @media (max-width: 400px) {
+            .main-card {
+                padding: 30px 20px;
+            }
+            h1 { font-size: 26px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="disclaimer">
-  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
-</div>
+<div class="wrapper" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+    
+    <div class="main-card">
+        <div class="logo-area">
+            <h1>Lavli</h1>
+            <p class="subtitle">Kişisel Gebelik Yolculuğunuz</p>
+        </div>
 
-<div class="container">
-  <h1>Lavli Gebelik Rehberi</h1>
-  <h2>Haftanızı seçin ve rehberi görün</h2>
+        <div class="selection-container">
+            <div class="custom-select-wrapper">
+                <select id="weekSelect">
+                    <option value="">Kaçıncı haftadasınız?</option>
+                    <option value="case1">Gebeliğin 1. Haftası</option>
+                    <option value="case2">Gebeliğin 2. Haftası</option>
+                    <option value="case3">Gebeliğin 3. Haftası</option>
+                    <option value="case4">Gebeliğin 4. Haftası</option>
+                    </select>
+            </div>
+            <button id="showGuide" class="btn-primary">Rehberi Görüntüle</button>
+        </div>
 
-  <div class="select-wrapper">
-    <select id="weekSelect">
-      <option value="">Hafta Seçiniz</option>
-      <option value="case1">1. Hafta</option>
-      <option value="case2">2. Hafta</option>
-      <!-- case3 - case40 sonrasında ekle -->
-    </select>
-  </div>
+        <div class="guide-display-area" id="guideBox">
+            <div class="guide-content" id="guideText">
+                Haftanızı seçerek size özel hazırladığımız tıbbi bilgilere ulaşabilirsiniz.
+            </div>
+        </div>
 
-  <button id="showGuide">Göster</button>
+        <div class="download-footer">
+            <p>Daha fazlası için uygulamayı keşfedin</p>
+            <a href="https://onelink.to/ucy3z8" target="_blank" class="btn-download">
+                Lavli'yi İndir
+            </a>
+        </div>
+    </div>
 
-  <div class="guide-card" id="guide">
-    Lütfen bir hafta seçin.
-  </div>
-
-  <div class="download-section">
-    <p>Daha detaylı bilgiler için :</p>
-    <a href="https://onelink.to/ucy3z8" target="_blank">
-      <button>Lavli'yi İndir</button>
-    </a>
-  </div>
-</div>
-
-<div class="disclaimer">
-  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
+    <div class="legal-disclaimer">
+        <strong>Önemli Uyarı:</strong> Bu platformda sunulan içerikler genel bilgilendirme amaçlıdır. 
+        Her gebelik süreci benzersizdir. Tıbbi durumunuzla ilgili en doğru bilgi ve yönlendirme için 
+        lütfen hekiminizle irtibatta kalınız.
+    </div>
 </div>
 
 <script>
 const guides = {
-  case1: "Gebeliğin 1. Haftası:\n- Rahim hazırlık aşamasında.\n- Hormonal değişimler başlıyor.\n- Hafif yorgunluk ve duygu dalgalanmaları olabilir.\n\n(Dilersen buraya detaylı rehber metnini ekleyebilirsin)",
-  case2: "Gebeliğin 2. Haftası:\n- Yumurtlama dönemine yaklaşılmıştır.\n- Hormon seviyeleri artar.\n- Sağlıklı beslenme ve dinlenme önemlidir.\n\n(Burada ikinci haftanın detayını ekleyebilirsin)"
-  // case3-case40 formatını aynı şekilde ekle
+    case1: "Gebeliğin 1. Haftası\n\nBu hafta aslında vücudunuzun yeni bir döngüye hazırlandığı dönemdir. Henüz teknik olarak hamile sayılmasanız da, rahim duvarınız kendini yenilemeye başlar. \n\nBol su içmeyi ve folik asit takviyesi hakkında doktorunuza danışmayı unutmayın.",
+    case2: "Gebeliğin 2. Haftası\n\nVücudunuz yumurtlama dönemine giriyor. Hormon seviyelerinizdeki artış kendinizi daha enerjik hissettirebilir. Sağlıklı beslenme düzenine sadık kalmak bu süreçte kritik önem taşır.",
+    case3: "Gebeliğin 3. Haftası\n\nMüjde! Döllenme bu hafta gerçekleşiyor. Hücreler hızla bölünerek yeni bir hayatın temelini atıyor. Hafif kasık ağrıları hissetmeniz oldukça normaldir.",
+    case4: "Gebeliğin 4. Haftası\n\nBebeğiniz rahim duvarına yerleşiyor. Bu aşamada hassasiyetiniz artabilir. Test yapmak için heyecanlı olabilirsiniz, ancak en doğru sonuç için birkaç gün daha beklemeniz önerilir."
 };
 
 document.getElementById('showGuide').addEventListener('click', function() {
-  const week = document.getElementById('weekSelect').value;
-  const guideDiv = document.getElementById('guide');
+    const week = document.getElementById('weekSelect').value;
+    const guideText = document.getElementById('guideText');
+    const guideBox = document.getElementById('guideBox');
 
-  if(!week){
-    guideDiv.innerText = "Lütfen bir hafta seçin.";
-    return;
-  }
+    if(!week){
+        guideText.innerText = "Lütfen bir hafta seçerek devam edin.";
+        guideBox.style.borderColor = "#ff9a9e";
+        return;
+    }
 
-  guideDiv.innerText = guides[week] || "Bu hafta için rehber henüz eklenmedi.";
+    // Seçim yapıldığında stil güncellemesi
+    guideBox.style.borderColor = "#7028e4";
+    guideBox.style.background = "#fff";
+    
+    // Metni getir
+    guideText.innerText = guides[week] || "Bu hafta için içerik hazırlık aşamasındadır. Çok yakında burada olacak!";
+    
+    // Hafif bir giriş efekti
+    guideText.style.opacity = 0;
+    setTimeout(() => {
+        guideText.style.opacity = 1;
+    }, 100);
 });
 </script>
 
