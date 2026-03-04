@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Lavli Ovülasyon Hesaplayıcı</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<link rel="icon" type="image/png" href="https://i.hizliresim.com/b9pkx8v.png?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 40%, #a18cd1 70%, #7028e4 100%);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.bg-container { position: fixed; inset: 0; z-index:0; display:flex; align-items:center; opacity:0.8; pointer-events:none; }
+.bg-row { display:flex; overflow:hidden; width:100%; user-select:none; }
+.marquee-inner { display:flex; width:max-content; animation: scroll 60s linear infinite; }
+.bg-images img { width:280px; height:auto; margin:0 20px; border-radius:24px; box-shadow:0 15px 40px rgba(0,0,0,0.3); flex-shrink:0; }
+@keyframes scroll { 0%{transform:translateX(0);} 100%{transform:translateX(-33.333%);} }
+
+.container { width:92%; max-width:400px; z-index:10; position:relative; }
+.card { background: rgba(255,255,255,0.98); border-radius:35px; padding:30px 20px; box-shadow:0 30px 60px rgba(0,0,0,0.25); display:flex; flex-direction:column; align-items:center; text-align:center; backdrop-filter:blur(10px);}
+.logo { width:85px; height:85px; margin-bottom:15px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+.app-name { font-size:32px; font-weight:700; margin-bottom:5px; color:#333; }
+.tagline { font-size:16px; font-weight:400; color:#666; margin-bottom:15px; }
+.subtitle { font-size:14px; font-weight:600; color:#888; margin-bottom:20px; }
+
+input, select { padding:12px; font-size:14px; border-radius:12px; border:1px solid #ccc; width:100%; margin-bottom:10px; }
+button { padding:12px 0; width:100%; font-weight:700; border-radius:15px; border:none; background:#7028e4; color:white; font-size:14px; margin-bottom:15px; cursor:pointer; }
+#results { margin-top:10px; font-size:14px; color:#333; line-height:1.3; font-weight:600; white-space:pre-line; }
+.download-section { margin-top:20px; text-align:center; }
+.download-section p { margin-bottom:10px; font-size:14px; color:#7028e4; font-weight:600; }
+.disclaimer { margin: 30px 0 50px 0; font-size:10px; color:#eee; text-align:center; padding:0 15px; max-width:400px; z-index:10; }
+</style>
+</head>
+
+<body>
+
+<div class="bg-container bg-images">
+  <div class="bg-row">
+    <div class="marquee-inner">
+      <img src="https://i.hizliresim.com/h10xghx.png">
+      <img src="https://i.hizliresim.com/rgw4ji5.png">
+      <img src="https://i.hizliresim.com/c7bja0o.png">
+      <img src="https://i.hizliresim.com/92z511w.png">
+      <img src="https://i.hizliresim.com/4wdx0ob.png">
+      <img src="https://i.hizliresim.com/2pji5w1.png">
+      <img src="https://i.hizliresim.com/ilalwr9.png">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <img src="https://i.hizliresim.com/b9pkx8v.png?v=3" alt="Logo" class="logo">
+    <div class="app-name">Lavli</div>
+    <div class="tagline">Ovülasyon Hesaplayıcı 🥰</div>
+    <div class="subtitle">Son regl tarihini ve döngü bilgilerini girerek en verimli günleri görebilirsiniz (Eğlenceli Teori)</div>
+
+    <label for="lastPeriod">Son regl tarihi:</label>
+    <input type="date" id="lastPeriod">
+
+    <label for="cycleLength">Regl döngüsü (gün):</label>
+    <input type="number" id="cycleLength" min="20" max="45" placeholder="20-45">
+
+    <label for="periodLength">Regl süresi (gün):</label>
+    <input type="number" id="periodLength" min="2" max="10" placeholder="2-10">
+
+    <button id="calculateBtn">Hesapla</button>
+
+    <div id="results"></div>
+
+    <div class="download-section">
+      <p>Daha detaylı analiz için</p>
+      <a href="https://onelink.to/ucy3z8" target="_blank"><button>Lavli'yi İndir</button></a>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
+</div>
+
+<script>
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const lastPeriodVal = document.getElementById('lastPeriod').value;
+  const cycleLength = parseInt(document.getElementById('cycleLength').value);
+  const periodLength = parseInt(document.getElementById('periodLength').value);
+
+  if (!lastPeriodVal || !cycleLength || !periodLength) {
+    alert("Lütfen tüm bilgileri eksiksiz girin.");
+    return;
+  }
+  if (cycleLength < 20 || cycleLength > 45) {
+    alert("Regl döngüsü 20-45 gün arası olmalıdır.");
+    return;
+  }
+  if (periodLength < 2 || periodLength > 10) {
+    alert("Regl süresi 2-10 gün arası olmalıdır.");
+    return;
+  }
+
+  const lastPeriod = new Date(lastPeriodVal);
+
+  function addDays(date, days) {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
+  function formatDate(d) {
+    const day = String(d.getDate()).padStart(2,'0');
+    const month = String(d.getMonth()+1).padStart(2,'0');
+    const year = d.getFullYear();
+    return `${day}.${month}.${year}`;
+  }
+
+  let output = "";
+  for (let i=1; i<=2; i++) {
+    const nextCycleStart = addDays(lastPeriod, cycleLength*i);
+    const ovulationDay = addDays(nextCycleStart, cycleLength - periodLength - 14); 
+    const fertileStart = addDays(ovulationDay, -4);
+    const fertileEnd = addDays(ovulationDay, 1);
+
+    output += `🔹 ${i}. Döngü En verimli günler:\n`;
+    output += `   ${formatDate(fertileStart)} - ${formatDate(fertileEnd)}\n`;
+    output += `   (Bu günlerde en çok doğurganlık ihtimali)\n\n`;
+  }
+
+  document.getElementById('results').innerText = output.trim();
+});
+</script>
+
+</body>
+</html>
