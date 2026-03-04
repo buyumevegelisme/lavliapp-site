@@ -206,33 +206,55 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
 
   const startDate = new Date(lastPeriod);
   const today = new Date();
+  
+  // Gelecek tarih kontrolü
+  if (startDate > today) {
+    alert("Son adet tarihi bugünden ileri bir tarih olamaz.");
+    return;
+  }
 
-  // Gün farkı
+  // Gün farkı hesaplama
   const diffTime = today - startDate;
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-  // Haftalık
+  // Haftalık hesaplama
   const weeks = Math.floor(diffDays / 7);
   const days = diffDays % 7;
 
-  // Trimester
+  // Trimester Belirleme
   let trimester = "";
   if (weeks < 13) trimester = "1. Trimester";
   else if (weeks < 28) trimester = "2. Trimester";
   else trimester = "3. Trimester";
 
-  // Doğuma kalan
+  // Tahmini Doğum Tarihi (LMP + 280 Gün)
   const dueDate = new Date(startDate);
-  dueDate.setDate(dueDate.getDate() + 280); // Ortalama 40 hafta
-  const remainingTime = dueDate - today;
-  const remainingDays = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
-  const remainingWeeks = Math.floor(remainingDays / 7);
-  const remainingDaysMod = remainingDays % 7;
+  dueDate.setDate(dueDate.getDate() + 280);
+  
+  // Tarihi Türkiye formatına çevirme (DD.MM.YYYY)
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+  const formattedDueDate = dueDate.toLocaleDateString('tr-TR', options);
 
+  // Doğuma kalan süre
+  const remainingTime = dueDate - today;
+  const remainingDaysTotal = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
+  
+  // Eğer doğum tarihi geçtiyse bilgilendirme yap
+  let remainingText = "";
+  if (remainingDaysTotal > 0) {
+    const remainingWeeks = Math.floor(remainingDaysTotal / 7);
+    const remainingDaysMod = remainingDaysTotal % 7;
+    remainingText = `Doğuma yaklaşık: ${remainingWeeks} hafta ${remainingDaysMod} gün`;
+  } else {
+    remainingText = `Beklenen doğum tarihi geçti.`;
+  }
+
+  // Sonuçları Ekrana Yazdır
   document.getElementById('results').innerHTML = `
-    Gebeliğiniz: ${diffDays} gün (${weeks} hafta ${days} gün)<br>
-    Bulunduğunuz trimester: ${trimester}<br>
-    Doğuma yaklaşık: ${remainingWeeks} hafta ${remainingDaysMod} gün
+    <strong>Gebeliğiniz:</strong> ${weeks} hafta ${days} gün (${diffDays} gün)<br>
+    <strong>Bulunduğunuz evre:</strong> ${trimester}<br>
+    <strong>Tahmini Doğum Tarihi:</strong> ${formattedDueDate}<br>
+    <span style="color: #7028e4; font-weight: bold;">${remainingText}</span>
   `;
 });
 </script>
