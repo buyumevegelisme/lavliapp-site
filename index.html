@@ -14,7 +14,7 @@
       visibility: hidden !important;
       height: 0 !important;
     }
-    
+
     html, body {
       margin: 0 !important;
       padding: 0 !important;
@@ -22,14 +22,10 @@
       min-height: 100%;
       overflow-x: hidden;
       background: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 40%, #a18cd1 70%, #7028e4 100%);
-    }
-
-    body {
       font-family: 'Inter', sans-serif;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
       flex-direction: column;
+      align-items: center;
       position: relative;
     }
 
@@ -72,12 +68,20 @@
 
     .top-title {
       margin-top: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
       cursor: pointer;
       z-index: 20;
       text-align: center;
+      padding: 8px 15px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .top-title:hover {
+      background: rgba(0,0,0,0.35);
     }
 
     .container {
@@ -188,6 +192,8 @@
       color: #aaa;
       font-size: 11px;
       text-decoration: none;
+      margin-top: 5px;
+      display: block;
     }
 
     .feature-card {
@@ -196,6 +202,13 @@
       padding: 25px 20px;
       margin-top: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .feature-card h4 {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .feature-grid {
@@ -217,13 +230,20 @@
     }
 
     .disclaimer {
-      margin: 30px 0 50px 0;
-      font-size: 10px;
+      margin: 20px 0 10px 0;
+      font-size: 9px;
       color: #eee;
       text-align: center;
       padding: 0 15px;
       max-width: 400px;
       z-index: 10;
+    }
+
+    .ad-note {
+      font-size: 8px;
+      color: #ccc;
+      text-align: center;
+      margin-top: 3px;
     }
   </style>
 
@@ -271,24 +291,26 @@ Lavli Regl, Gebelik, Bebek neler yapabilir?
 
     <div class="footer">
       <a href="https://www.instagram.com/lavliapp" target="_blank" class="contact-link">📧 Bize Ulaşın</a>
-      <a href="https://lavliapp.com/privacy/" target="_blank" class="privacy-link">Gizlilik Politikası</a>
     </div>
   </div>
 
   <div class="feature-card">
+    <h4>Hemen dene!</h4>
     <div class="feature-grid">
-      <a href="#" class="feature-btn">Gebelik Hesaplayıcı</a>
-      <a href="#" class="feature-btn">Trimester Hesaplama</a>
-      <a href="#" class="feature-btn">Çin Takvimi</a>
-      <a href="#" class="feature-btn">Gebelik Planlama</a>
-      <a href="#" class="feature-btn">40 Hafta Rehberi</a>
+      <a href="#" class="feature-btn">Gebelik Rehberi</a>
+      <a href="#" class="feature-btn">Gebelik Hafta Hesaplayıcı</a>
       <a href="#" class="feature-btn">Gebelik Sözlüğü</a>
+      <a href="#" class="feature-btn">Çin Takvimi</a>
+      <a href="#" class="feature-btn">Ovülasyon Hesaplayıcı</a>
+      <a href="#" class="feature-btn">Hemen İndir</a>
     </div>
   </div>
 </div>
 
 <div class="disclaimer">
 Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
+<a href="https://lavliapp.com/privacy/" target="_blank" class="privacy-link">Gizlilik Politikası</a>
+<div class="ad-note">Reklam içerir</div>
 </div>
 
 <div id="featureModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:100; align-items:center; justify-content:center;">
