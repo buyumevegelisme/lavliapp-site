@@ -250,11 +250,26 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   }
 
   // Sonuçları Ekrana Yazdır
+ // Sonuçları Ekrana Yazdır (Satır araları açılmış versiyon)
   document.getElementById('results').innerHTML = `
-    <strong>Gebeliğiniz:</strong> ${weeks} hafta ${days} gün (${diffDays} gün)<br>
-    <strong>Bulunduğunuz evre:</strong> ${trimester}<br>
-    <strong>Tahmini Doğum Tarihi:</strong> ${formattedDueDate}<br>
-    <span style="color: #7028e4; font-weight: bold;">${remainingText}</span>
+    <div style="margin-bottom: 12px;">
+      <strong>Gebeliğiniz:</strong><br>
+      ${weeks} hafta ${days} gün (${diffDays} gün)
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+      <strong>Bulunduğunuz evre:</strong><br>
+      ${trimester}
+    </div>
+    
+    <div style="margin-bottom: 12px;">
+      <strong>Tahmini Doğum Tarihi:</strong><br>
+      ${formattedDueDate}
+    </div>
+    
+    <div style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ddd; color: #7028e4; font-weight: bold;">
+      ${remainingText}
+    </div>
   `;
 });
 </script>
