@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://lavliapp.com/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://lavliapp.com/gebelikrehberi/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lavliapp.com/gebelikhesaplayici/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lavliapp.com/regl/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lavliapp.com/sozluk/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://lavliapp.com/cintakvimi/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://lavliapp.com/privacy/</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.3</priority>
+  </url>
+</urlset>
