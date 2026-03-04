@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lavli Gebelik Hesaplayıcı</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+  <link rel="icon" type="image/png" href="https://i.hizliresim.com/b9pkx8v.png?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 40%, #a18cd1 70%, #7028e4 100%);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .bg-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .bg-row {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      user-select: none;
+    }
+
+    .marquee-inner {
+      display: flex;
+      width: max-content;
+      animation: scroll 60s linear infinite;
+    }
+
+    .bg-images img {
+      width: 280px; 
+      height: auto;
+      margin: 0 20px;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      flex-shrink: 0;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-33.333%); }
+    }
+
+    .container {
+      width: 92%;
+      max-width: 400px;
+      z-index: 10;
+      position: relative;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 35px;
+      padding: 30px 20px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      width: 85px;
+      height: 85px;
+      margin-bottom: 15px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .app-name {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .tagline {
+      font-size: 16px;
+      font-weight: 400;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    input[type="date"] {
+      padding:12px;
+      font-size:14px;
+      border-radius:12px;
+      border:1px solid #ccc;
+      width:100%;
+      margin-bottom:10px;
+    }
+
+    button {
+      padding:12px 0;
+      width:100%;
+      font-weight:700;
+      border-radius:15px;
+      border:none;
+      background:#7028e4;
+      color:white;
+      font-size:14px;
+      margin-bottom:15px;
+      cursor:pointer;
+    }
+
+    #results {
+      margin-top:15px;
+      font-size:14px;
+      color:#333;
+      line-height:1.5;
+    }
+
+    .footer {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .privacy-link {
+      color: #aaa;
+      font-size: 11px;
+      text-decoration: none;
+    }
+
+    .disclaimer {
+      margin: 30px 0 50px 0;
+      font-size: 10px;
+      color: #eee;
+      text-align: center;
+      padding: 0 15px;
+      max-width: 400px;
+      z-index: 10;
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y24DC6RP3C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y24DC6RP3C');
+  </script>
+</head>
+
+<body>
+
+<div class="bg-container bg-images">
+  <div class="bg-row">
+    <div class="marquee-inner">
+      <img src="https://i.hizliresim.com/h10xghx.png">
+      <img src="https://i.hizliresim.com/rgw4ji5.png">
+      <img src="https://i.hizliresim.com/c7bja0o.png">
+      <img src="https://i.hizliresim.com/92z511w.png">
+      <img src="https://i.hizliresim.com/4wdx0ob.png">
+      <img src="https://i.hizliresim.com/2pji5w1.png">
+      <img src="https://i.hizliresim.com/ilalwr9.png">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <img src="https://i.hizliresim.com/b9pkx8v.png?v=3" alt="Logo" class="logo" />
+    <div class="app-name">Lavli</div>
+    <div class="tagline">Gebelik Hesaplayıcı 💜</div>
+    <div class="subtitle">Son adet tarihinizi seçin</div>
+
+    <!-- Tarih girişi -->
+    <input type="date" id="lastPeriod" />
+
+    <button id="calculateBtn">Hesapla</button>
+
+    <!-- Sonuçlar buraya gelecek -->
+    <div id="results"></div>
+
+    <div class="footer">
+      <a href="https://lavliapp.com/privacy/" target="_blank" class="privacy-link">Gizlilik Politikası</a>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
+</div>
+
+<script>
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const lastPeriod = document.getElementById('lastPeriod').value;
+  if (!lastPeriod) {
+    alert("Lütfen son adet tarihinizi seçin.");
+    return;
+  }
+
+  const startDate = new Date(lastPeriod);
+  const today = new Date();
+
+  // Gün farkı
+  const diffTime = today - startDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  // Haftalık
+  const weeks = Math.floor(diffDays / 7);
+  const days = diffDays % 7;
+
+  // Trimester
+  let trimester = "";
+  if (weeks < 13) trimester = "1. Trimester";
+  else if (weeks < 28) trimester = "2. Trimester";
+  else trimester = "3. Trimester";
+
+  // Doğuma kalan
+  const dueDate = new Date(startDate);
+  dueDate.setDate(dueDate.getDate() + 280); // Ortalama 40 hafta
+  const remainingTime = dueDate - today;
+  const remainingDays = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
+  const remainingWeeks = Math.floor(remainingDays / 7);
+  const remainingDaysMod = remainingDays % 7;
+
+  document.getElementById('results').innerHTML = `
+    Gebeliğiniz: ${diffDays} gün (${weeks} hafta ${days} gün)<br>
+    Bulunduğunuz trimester: ${trimester}<br>
+    Doğuma yaklaşık: ${remainingWeeks} hafta ${remainingDaysMod} gün
+  `;
+});
+</script>
+
+</body>
+</html>
