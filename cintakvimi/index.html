@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Lavli Çin Takvimi Hesaplayıcı</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<link rel="icon" type="image/png" href="https://i.hizliresim.com/b9pkx8v.png?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 40%, #a18cd1 70%, #7028e4 100%);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.bg-container { position: fixed; inset: 0; z-index:0; display:flex; align-items:center; opacity:0.8; pointer-events:none; }
+.bg-row { display:flex; overflow:hidden; width:100%; user-select:none; }
+.marquee-inner { display:flex; width:max-content; animation: scroll 60s linear infinite; }
+.bg-images img { width:280px; height:auto; margin:0 20px; border-radius:24px; box-shadow:0 15px 40px rgba(0,0,0,0.3); flex-shrink:0; }
+@keyframes scroll { 0%{transform:translateX(0);} 100%{transform:translateX(-33.333%);} }
+
+.container { width:92%; max-width:400px; z-index:10; position:relative; }
+.card { background: rgba(255,255,255,0.98); border-radius:35px; padding:30px 20px; box-shadow:0 30px 60px rgba(0,0,0,0.25); display:flex; flex-direction:column; align-items:center; text-align:center; backdrop-filter:blur(10px);}
+.logo { width:85px; height:85px; margin-bottom:15px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+.app-name { font-size:32px; font-weight:700; margin-bottom:5px; color:#333; }
+.tagline { font-size:16px; font-weight:400; color:#666; margin-bottom:15px; }
+.subtitle { font-size:14px; font-weight:600; color:#888; margin-bottom:20px; }
+
+input, select { padding:12px; font-size:14px; border-radius:12px; border:1px solid #ccc; width:100%; margin-bottom:10px; }
+button { padding:12px 0; width:100%; font-weight:700; border-radius:15px; border:none; background:#7028e4; color:white; font-size:14px; margin-bottom:15px; cursor:pointer; }
+#results { margin-top:10px; font-size:14px; color:#333; line-height:1.3; font-weight:600; }
+.download-section { margin-top:20px; text-align:center; }
+.download-section p { margin-bottom:10px; font-size:14px; color:#7028e4; font-weight:600; }
+.disclaimer { margin: 30px 0 50px 0; font-size:10px; color:#eee; text-align:center; padding:0 15px; max-width:400px; z-index:10; }
+</style>
+</head>
+
+<body>
+
+<div class="bg-container bg-images">
+  <div class="bg-row">
+    <div class="marquee-inner">
+      <img src="https://i.hizliresim.com/h10xghx.png">
+      <img src="https://i.hizliresim.com/rgw4ji5.png">
+      <img src="https://i.hizliresim.com/c7bja0o.png">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <img src="https://i.hizliresim.com/b9pkx8v.png?v=3" alt="Logo" class="logo">
+    <div class="app-name">Lavli</div>
+    <div class="tagline">Çin Takvimi Cinsiyet Hesaplayıcı 🎉</div>
+    <div class="subtitle">Gebelikte bebeğinizin cinsiyetini tahmini olarak görebilirsiniz (eğlencelik teori)</div>
+
+    <label for="motherAge">Anne yaşı (gebelik yılı):</label>
+    <input type="number" id="motherAge" min="15" max="50" placeholder="Yaşınızı girin">
+
+    <label for="conceptionMonth">Tahmini döllenme ayı:</label>
+    <select id="conceptionMonth">
+      <option value="">Seçiniz</option>
+      <option value="1">Ocak</option>
+      <option value="2">Şubat</option>
+      <option value="3">Mart</option>
+      <option value="4">Nisan</option>
+      <option value="5">Mayıs</option>
+      <option value="6">Haziran</option>
+      <option value="7">Temmuz</option>
+      <option value="8">Ağustos</option>
+      <option value="9">Eylül</option>
+      <option value="10">Ekim</option>
+      <option value="11">Kasım</option>
+      <option value="12">Aralık</option>
+    </select>
+
+    <button id="calculateBtn">Hesapla</button>
+    <div id="results"></div>
+
+    <div class="download-section">
+      <p>Detaylı cinsiyet analizi için</p>
+      <a href="https://onelink.to/ucy3z8" target="_blank"><button>Lavli'yi İndir</button></a>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  Bu içerik yalnızca eğlence amaçlıdır. Çin takvimi teorisine dayalı tahminler, tıbbi doğruluk garanti etmez. Her zaman uzman görüşüne danışınız.
+</div>
+
+<script>
+// Çin Takvimi tablosu (yaş 18-45, ay 1-12)
+const chineseCalendar = {
+18:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+19:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+20:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+21:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+22:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+23:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+24:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+25:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+26:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+27:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+28:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+29:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+30:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+31:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+32:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+33:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+34:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+35:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+36:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+37:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+38:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+39:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+40:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+41:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+42:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+43:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"],
+44:["Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek"],
+45:["Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız","Erkek","Kız"]
+};
+
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const age = parseInt(document.getElementById('motherAge').value);
+  const month = parseInt(document.getElementById('conceptionMonth').value);
+
+  if (!age || !month) { alert("Lütfen tüm bilgileri girin."); return; }
+  if (age < 18 || age > 45) { alert("Yaş 18-45 arası olmalıdır."); return; }
+
+  const gender = chineseCalendar[age][month-1];
+  document.getElementById('results').innerHTML = `Çin takvimi teorisine göre bebeğin <strong>${gender}</strong> gibi görünüyor`;
+});
+</script>
+
+</body>
+</html>
