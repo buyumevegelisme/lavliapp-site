@@ -5,6 +5,7 @@
   <title>Lavli Gebelik Sözlüğü</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 
+  <link rel="icon" type="image/png" href="https://i.hizliresim.com/b9pkx8v.png?v=3">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -44,6 +45,8 @@
       margin-top: 25px;
       margin-bottom: 10px;
       font-size: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
     }
 
     ul {
@@ -52,8 +55,10 @@
     }
 
     li {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       font-size: 15px;
+      border-bottom: 1px solid #f9f9f9;
+      padding-bottom: 5px;
     }
 
     li strong {
@@ -63,15 +68,21 @@
     .disclaimer {
       margin: 30px 0 50px 0;
       font-size: 12px;
-      color: #555;
+      color: #eee;
       text-align: center;
       max-width: 800px;
       padding: 0 15px;
     }
 
-    a.home-link {
+    .download-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 25px 0;
+    }
+
+    .download-btn {
       display: inline-block;
-      margin-top: 20px;
       padding: 12px 25px;
       background: #7028e4;
       color: #fff;
@@ -81,10 +92,19 @@
       transition: 0.2s;
     }
 
-    a.home-link:hover {
+    .download-btn:hover {
       background: #5a1fd1;
+      transform: translateY(-2px);
     }
   </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y24DC6RP3C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y24DC6RP3C');
+  </script>
 </head>
 
 <body>
@@ -93,141 +113,156 @@
 
     <h2>A. Regl ve Üreme Sistemi Terimleri</h2>
     <ul>
-      <li><strong>Menstrüasyon:</strong> Adet kanaması, regl.</li>
-      <li><strong>Menarş:</strong> İlk adet kanaması.</li>
-      <li><strong>Amenore:</strong> Adet görememe hali.</li>
-      <li><strong>Dismenore:</strong> Sancılı/ağrılı adet görme.</li>
-      <li><strong>Oligomenore:</strong> Seyrek adet görme (35 günden uzun aralıklar).</li>
-      <li><strong>Polimenore:</strong> Sık adet görme (21 günden kısa aralıklar).</li>
-      <li><strong>Menoraji:</strong> Adet kanamasının miktar olarak aşırı olması.</li>
-      <li><strong>Metroraji:</strong> Adet dönemi dışındaki ara kanamalar.</li>
-      <li><strong>Ovülasyon:</strong> Yumurtlama.</li>
-      <li><strong>Ovaryum:</strong> Yumurtalık.</li>
-      <li><strong>Uterus:</strong> Rahim.</li>
-      <li><strong>Endometriyum:</strong> Rahmin iç tabakası (her ay kalınlaşıp dökülen kısım).</li>
-      <li><strong>Myometriyum:</strong> Rahmin kas tabakası.</li>
-      <li><strong>Serviks:</strong> Rahim ağzı.</li>
-      <li><strong>Vajina:</strong> Hazne, doğum kanalı.</li>
-      <li><strong>Tuba Uterina:</strong> Fallop tüpleri (döllenmenin gerçekleştiği yer).</li>
-      <li><strong>Folikül:</strong> Yumurtalıkta yumurtayı taşıyan küçük kesecik.</li>
-      <li><strong>Luteal Faz:</strong> Yumurtlamadan sonraki adet öncesi dönem.</li>
-      <li><strong>Foliküler Faz:</strong> Adetin başlangıcından yumurtlamaya kadar geçen dönem.</li>
-      <li><strong>PMS (Premenstrüel Sendrom):</strong> Adet öncesi gerginlik sendromu.</li>
-      <li><strong>Anovülasyon:</strong> Yumurtlamanın gerçekleşmemesi.</li>
-      <li><strong>Lökore:</strong> Fizyolojik beyaz/şeffaf akıntı.</li>
-      <li><strong>Menopoz:</strong> Adetin kalıcı olarak kesilmesi.</li>
-      <li><strong>Perimenopoz:</strong> Menopoza geçiş süreci.</li>
-      <li><strong>Himen:</strong> Kızlık zarı.</li>
+      <li><strong>Menstrüasyon:</strong> Rahim iç tabakasının her ay döllenme gerçekleşmediğinde kanama yoluyla dışarı atılması süreci; adet kanaması, regl.</li>
+      <li><strong>Menarş:</strong> Bir genç kızın hayatı boyunca gördüğü ilk adet kanaması evresidir.</li>
+      <li><strong>Amenore:</strong> Üreme çağındaki bir kadının adet görememe halidir; gebelik dışı nedenlerle de oluşabilir.</li>
+      <li><strong>Dismenore:</strong> Adet dönemlerinde yaşanan şiddetli kramp ve sancılı/ağrılı adet görme durumudur.</li>
+      <li><strong>Oligomenore:</strong> Adet döngülerinin normalden daha seyrek gerçekleşmesi hali (genellikle 35 günden uzun aralıklar).</li>
+      <li><strong>Polimenore:</strong> Adet kanamalarının normalden daha sık gerçekleşmesi durumu (genellikle 21 günden kısa aralıklar).</li>
+      <li><strong>Menoraji:</strong> Adet kanamasının süre olarak uzun veya miktar olarak aşırı derecede fazla olmasıdır.</li>
+      <li><strong>Metroraji:</strong> Normal adet döngüsü zamanları dışındaki düzensiz ara kanamaları ifade eder.</li>
+      <li><strong>Ovülasyon:</strong> Olgunlaşan yumurtanın yumurtalıktan atılarak döllenmeye hazır hale gelmesi; yumurtlama.</li>
+      <li><strong>Ovaryum:</strong> Kadın üreme sisteminde yumurtaların üretildiği ve depolandığı organdır; yumurtalık.</li>
+      <li><strong>Uterus:</strong> Embriyonun yerleştiği ve geliştiği kaslı organ; rahim.</li>
+      <li><strong>Endometriyum:</strong> Rahmin en iç tabakası olup her ay gebelik hazırlığı için kalınlaşan ve döllenme olmazsa dökülen kısımdır.</li>
+      <li><strong>Myometriyum:</strong> Rahmin doğum sırasında kasılmaları gerçekleştiren güçlü kas tabakasıdır.</li>
+      <li><strong>Serviks:</strong> Rahmin vajina ile birleştiği en alt bölgesi; rahim ağzı.</li>
+      <li><strong>Vajina:</strong> Cinsel birleşmenin gerçekleştiği ve doğumun tamamlandığı kanal; hazne.</li>
+      <li><strong>Tuba Uterina:</strong> Yumurtalık ile rahmi birbirine bağlayan, döllenmenin gerçekleştiği kanallar; fallop tüpleri.</li>
+      <li><strong>Folikül:</strong> Yumurtalık içinde bulunan ve içerisinde bir adet olgunlaşmamış yumurta hücresi taşıyan küçük keseciklerdir.</li>
+      <li><strong>Luteal Faz:</strong> Yumurtlama gerçekleştiği günden bir sonraki adetin ilk gününe kadar geçen yaklaşık 14 günlük sabit dönem.</li>
+      <li><strong>Foliküler Faz:</strong> Adetin başlangıcından yumurtlamanın gerçekleştiği ana kadar geçen gelişimsel dönem.</li>
+      <li><strong>PMS (Premenstrüel Sendrom):</strong> Adet başlamadan günler önce görülen fiziksel ve duygusal gerginlik hali.</li>
+      <li><strong>Anovülasyon:</strong> Adet döngüsü içerisinde yumurtlamanın gerçekleşmemesi durumu.</li>
+      <li><strong>Lökore:</strong> Genellikle östrojen etkisiyle oluşan, fizyolojik, kokusuz ve şeffaf/beyaz renkli vajinal akıntı.</li>
+      <li><strong>Menopoz:</strong> Yumurtalık faaliyetlerinin sona ermesiyle adet döngülerinin kalıcı olarak kesilmesidir.</li>
+      <li><strong>Perimenopoz:</strong> Menopoz öncesindeki geçiş süreci olup hormon değişimlerinin yaşandığı dönemdir.</li>
+      <li><strong>Himen:</strong> Vajina girişini kısmen kapatan ince doku kıvrımı; halk arasında bilinen adıyla kızlık zarı.</li>
     </ul>
 
     <h2>B. Gebelik (Hamilelik) Genel Terimleri</h2>
     <ul>
-      <li><strong>Gravida:</strong> Toplam gebelik sayısı.</li>
-      <li><strong>Parite (Para):</strong> Canlı doğum sayısı.</li>
-      <li><strong>Primigravida:</strong> İlk kez hamile kalan kadın.</li>
-      <li><strong>Multigravida:</strong> Daha önce hamilelik geçirmiş kadın.</li>
-      <li><strong>Gestation (Gestasyon):</strong> Gebelik süreci.</li>
-      <li><strong>Trimester:</strong> Gebeliğin her bir 3 aylık dönemi (Toplam 3 trimester vardır).</li>
-      <li><strong>Zigot:</strong> Döllenmiş yumurta.</li>
-      <li><strong>Embriyo:</strong> İlk 8 haftalık gelişim aşaması.</li>
-      <li><strong>Fetüs:</strong> 8. haftadan doğuma kadar olan gelişim aşaması.</li>
-      <li><strong>Plasenta:</strong> Eş, son (Bebeği besleyen organ).</li>
-      <li><strong>Umut kordonu (Funikulus):</strong> Göbek bağı.</li>
-      <li><strong>Amniyon Sıvısı:</strong> Bebeğin içinde yüzdüğü su.</li>
-      <li><strong>Amniyotik Kese:</strong> Bebeği ve sıvıyı çevreleyen membran.</li>
-      <li><strong>Konsepsiyon:</strong> Döllenme, gebe kalma.</li>
-      <li><strong>İmplantasyon:</strong> Yerleşme (embriyonun rahme tutunması).</li>
-      <li><strong>SAT (Son Adet Tarihi):</strong> Gebelik hesaplamasında başlangıç kabul edilen gün.</li>
-      <li><strong>EDD (Estimated Due Date):</strong> Beklenen doğum tarihi.</li>
-      <li><strong>Quickening:</strong> Bebeğin hareketlerinin anne tarafından ilk kez hissedilmesi.</li>
-      <li><strong>Viabilite:</strong> Bebeğin rahim dışında yaşayabilme yeteneği.</li>
-      <li><strong>Ektopik Gebelik:</strong> Dış gebelik.</li>
-      <li><strong>Mol Gebelik:</strong> Üzüm gebeliği.</li>
-      <li><strong>Abortus:</strong> Düşük.</li>
-      <li><strong>Missed Abortus:</strong> Belirti vermeyen, fark edilmeyen düşük.</li>
-      <li><strong>Brakston Hicks:</strong> Yalancı doğum sancıları (hazırlık kasılmaları).</li>
-      <li><strong>Fundus:</strong> Rahmin en üst kısmı.</li>
+      <li><strong>Gravida:</strong> Bir kadının geçmişteki ve şu andaki toplam gebelik sayısını belirten terimdir.</li>
+      <li><strong>Parite (Para):</strong> Gebelik haftasına bakılmaksızın gerçekleşen canlı veya ölü doğum sayısını ifade eder.</li>
+      <li><strong>Primigravida:</strong> İlk kez hamilelik deneyimi yaşayan kadın.</li>
+      <li><strong>Multigravida:</strong> Daha önce bir veya birden fazla kez hamilelik geçirmiş olan kadın.</li>
+      <li><strong>Gestation (Gestasyon):</strong> Döllenmeden doğuma kadar geçen toplam gebelik süreci.</li>
+      <li><strong>Trimester:</strong> Gebeliğin her biri yaklaşık 13-14 hafta süren üç ana bölümünden her biri.</li>
+      <li><strong>Zigot:</strong> Sperm ve yumurta hücresinin birleşmesiyle oluşan tek hücreli döllenmiş yapı.</li>
+      <li><strong>Embriyo:</strong> Döllenmeden sonraki ilk 8 haftalık süreci kapsayan gelişim evresindeki canlı.</li>
+      <li><strong>Fetüs:</strong> Gebeliğin 9. haftasından doğuma kadar olan süreçteki gelişim aşaması.</li>
+      <li><strong>Plasenta:</strong> Anne ile bebek arasında besin ve oksijen alışverişini sağlayan geçici organ; eş, son.</li>
+      <li><strong>Umut kordonu (Funikulus):</strong> Bebeği plasentaya bağlayan ve kan akışını sağlayan göbek bağı.</li>
+      <li><strong>Amniyon Sıvısı:</strong> Bebeği rahim içerisinde darbelere karşı koruyan ve hareket etmesini sağlayan su.</li>
+      <li><strong>Amniyotik Kese:</strong> Bebeği ve amniyon sıvısını içine alan, iki tabakadan oluşan koruyucu zar.</li>
+      <li><strong>Konsepsiyon:</strong> Sperm hücresinin yumurtayı döllemesiyle başlayan gebe kalma anı.</li>
+      <li><strong>İmplantasyon:</strong> Embriyonun rahim duvarına tutunarak oraya yerleşmesi süreci; yerleşme.</li>
+      <li><strong>SAT (Son Adet Tarihi):</strong> Hamilelik haftasının hesaplanmasında baz alınan son adet döneminin ilk günü.</li>
+      <li><strong>EDD (Estimated Due Date):</strong> Gebelik süresine göre bebeğin doğmasının beklendiği tahmini tarih.</li>
+      <li><strong>Quickening:</strong> Anne adayının bebeğinin hareketlerini ilk kez hissettiği o heyecan verici an.</li>
+      <li><strong>Viabilite:</strong> Bebeğin rahim dışında tıbbi destekle veya desteksiz yaşayabilme olgunluğuna erişmesi.</li>
+      <li><strong>Ektopik Gebelik:</strong> Döllenmiş yumurtanın rahim dışında (genellikle tüplerde) yerleşmesi; dış gebelik.</li>
+      <li><strong>Mol Gebelik:</strong> Plasentayı oluşturan hücrelerin anormal gelişimiyle oluşan durum; üzüm gebeliği.</li>
+      <li><strong>Abortus:</strong> Gebeliğin 20. haftadan önce kendiliğinden veya tıbbi müdahale ile sonlanması; düşük.</li>
+      <li><strong>Missed Abortus:</strong> Bebeğin canlılığını yitirmesine rağmen herhangi bir kanama veya ağrı belirtisi vermemesi durumu.</li>
+      <li><strong>Brakston Hicks:</strong> Rahmin doğuma hazırlık için yaptığı, genellikle ağrısız ve düzensiz yalancı sancılar.</li>
+      <li><strong>Fundus:</strong> Gebelik muayenesinde yüksekliği ölçülen, rahmin en tepe noktası.</li>
     </ul>
 
     <h2>C. Tıbbi Durumlar ve Patolojiler</h2>
     <ul>
-      <li><strong>Preeklampsi:</strong> Gebelik zehirlenmesi (yüksek tansiyon ve protein kaçağı).</li>
-      <li><strong>Eklampsi:</strong> Gebelik zehirlenmesinin nöbetlerle seyreden ileri hali.</li>
-      <li><strong>Gestasyonel Diyabet:</strong> Gebelik şekeri.</li>
-      <li><strong>Hiperemezis Gravidarum:</strong> Gebelikte aşırı ve durdurulamayan kusma.</li>
-      <li><strong>Plesenta Previa:</strong> Plasentanın rahim ağzını kapatması.</li>
-      <li><strong>Dekolman Plasenta:</strong> Plasentanın vaktinden önce ayrılması.</li>
-      <li><strong>Polihidramniyoz:</strong> Bebeğin suyunun normalden fazla olması.</li>
-      <li><strong>Oligohidramniyoz:</strong> Bebeğin suyunun normalden az olması.</li>
-      <li><strong>Servikal Yetmezlik:</strong> Rahim ağzının erken açılması.</li>
-      <li><strong>Preterm Eylem:</strong> Erken doğum eylemi.</li>
-      <li><strong>Postterm Gebelik:</strong> Günü geçmiş gebelik (42 haftayı aşan).</li>
-      <li><strong>IUGR:</strong> Rahim içi gelişme geriliği.</li>
-      <li><strong>Koryoamniyonit:</strong> Amniyon kesesi enfeksiyonu.</li>
-      <li><strong>Mastit:</strong> Meme dokusu iltihabı.</li>
-      <li><strong>Linea Nigra:</strong> Hamilelikte karın ortasında oluşan koyu çizgi.</li>
-      <li><strong>Kloazma:</strong> Gebelik maskesi (yüzdeki lekeler).</li>
-      <li><strong>Striae Gravidarum:</strong> Gebelik çatlakları.</li>
-      <li><strong>Varis:</strong> Damar genişlemesi.</li>
-      <li><strong>Ödem:</strong> Vücutta sıvı toplanması.</li>
-      <li><strong>Pika:</strong> Toprak, kireç gibi besin dışı maddeleri yeme isteği.</li>
+      <li><strong>Preeklampsi:</strong> Gebelikte yüksek tansiyon ve idrarda protein kaçağı ile seyreden ciddi durum; gebelik zehirlenmesi.</li>
+      <li><strong>Eklampsi:</strong> Preeklampsinin ilerleyerek anne adayında nöbetlere ve bilinç kaybına yol açan tablo.</li>
+      <li><strong>Gestasyonel Diyabet:</strong> Daha önce şeker hastalığı olmayan bir kadında gebelik sırasında ortaya çıkan şeker yükselmesi.</li>
+      <li><strong>Hiperemezis Gravidarum:</strong> Gebelikte görülen sıradan bulantıların ötesinde, aşırı ve hastaneye yatış gerektiren kusma hali.</li>
+      <li><strong>Plesenta Previa:</strong> Plasentanın rahim ağzını tamamen veya kısmen kapatarak doğum yolunu engellemesi durumu.</li>
+      <li><strong>Dekolman Plasenta:</strong> Bebeğin eşinin (plasenta) doğumdan önce rahim duvarından erkenden ayrılması.</li>
+      <li><strong>Polihidramniyoz:</strong> Amniyon sıvısının bebeğin haftasına göre normalden çok daha fazla olması durumu.</li>
+      <li><strong>Oligohidramniyoz:</strong> Bebeği koruyan suyun (amniyon sıvısı) miktarının normal sınırların altına düşmesi.</li>
+      <li><strong>Servikal Yetmezlik:</strong> Rahim ağzının ağrısız bir şekilde erkenden açılmasıyla oluşan düşük veya erken doğum riski.</li>
+      <li><strong>Preterm Eylem:</strong> Gebeliğin 37. haftasından önce doğum sancılarının başlaması; erken doğum eylemi.</li>
+      <li><strong>Postterm Gebelik:</strong> Gebelik süresinin 42 tam haftayı aşması durumu; günü geçmiş gebelik.</li>
+      <li><strong>IUGR:</strong> Bebeğin rahim içerisinde genetik potansiyeline göre yavaş gelişmesi; rahim içi gelişme geriliği.</li>
+      <li><strong>Koryoamniyonit:</strong> Bebeği çevreleyen zarların ve sıvının enfeksiyon kapması durumu.</li>
+      <li><strong>Mastit:</strong> Emzirme döneminde meme dokusunun iltihaplanması, kızarması ve ağrıması hali.</li>
+      <li><strong>Linea Nigra:</strong> Karın bölgesinde göbek deliğinden aşağı doğru inen koyu renkli gebelik çizgisi.</li>
+      <li><strong>Kloazma:</strong> Hormonal değişimler nedeniyle yüz bölgesinde oluşan kahverengi lekeler; gebelik maskesi.</li>
+      <li><strong>Striae Gravidarum:</strong> Derinin gerilmesine bağlı olarak karın, göğüs ve kalçada oluşan gebelik çatlakları.</li>
+      <li><strong>Varis:</strong> Gebelikte artan kan hacmi ve baskı nedeniyle bacaklardaki damarların genişlemesi.</li>
+      <li><strong>Ödem:</strong> Vücut dokularında fazla sıvı birikmesi sonucu oluşan şişlikler (el, ayak ve bileklerde yaygındır).</li>
+      <li><strong>Pika:</strong> Vücuttaki vitamin veya mineral eksikliği sonucu toprak, kil, buz gibi besin dışı maddeleri yeme arzusu.</li>
     </ul>
 
     <h2>D. Doğum ve Sonrası Terimleri</h2>
     <ul>
-      <li><strong>Parturition:</strong> Doğum eylemi.</li>
-      <li><strong>Lantent Faz:</strong> Doğumun başlangıç, yavaş ilerleyen evresi.</li>
-      <li><strong>Aktif Faz:</strong> Rahim ağzının hızlı açıldığı evre.</li>
-      <li><strong>Dilatasyon:</strong> Rahim ağzının açılması (genişleme).</li>
-      <li><strong>Efasman:</strong> Rahim ağzının incelmesi (silinme).</li>
-      <li><strong>Prezentasyon:</strong> Bebeğin doğum kanalına giriş şekli (baş, makat vb.).</li>
-      <li><strong>Sefalik:</strong> Baş gelişi.</li>
-      <li><strong>Makat Geliş:</strong> Bebeğin kalça veya ayakla gelmesi.</li>
-      <li><strong>Sezaryen (C-Section):</strong> Cerrahi doğum.</li>
-      <li><strong>Epizyotomi:</strong> Doğumu kolaylaştırmak için yapılan cerrahi kesi.</li>
-      <li><strong>Vakum/Forseps:</strong> Doğuma yardımcı müdahale araçları.</li>
-      <li><strong>İndüksiyon:</strong> Suni sancı (doğumun başlatılması).</li>
-      <li><strong>Oksitosin:</strong> Doğum sancılarını başlatan aşk ve kasılma hormonu.</li>
-      <li><strong>Prolaktin:</strong> Süt üretimini sağlayan hormon.</li>
-      <li><strong>Kolostrum:</strong> Ağız sütü (ilk gelen yoğun süt).</li>
-      <li><strong>Laktasyon:</strong> Emzirme süreci.</li>
-      <li><strong>Puerperium:</strong> Lohusalık dönemi (ilk 6 hafta).</li>
-      <li><strong>Losi:</strong> Doğum sonrası gelen akıntı/kanama.</li>
-      <li><strong>İnvolsüyon:</strong> Rahmin doğumdan sonra eski haline dönmesi.</li>
-      <li><strong>Postpartum Depresyon:</strong> Doğum sonrası depresyon.</li>
+      <li><strong>Parturition:</strong> Doğum sancılarının başlamasından bebeğin ve plasentanın çıkışına kadar olan eylem.</li>
+      <li><strong>Lantent Faz:</strong> Doğumun ilk aşaması olan, rahim ağzının 3-4 cm'ye kadar yavaşça açıldığı evre.</li>
+      <li><strong>Aktif Faz:</strong> Sancıların sıklaştığı ve rahim ağzının 4 cm'den tam açılmaya (10 cm) hızlıca ilerlediği evre.</li>
+      <li><strong>Dilatasyon:</strong> Doğum sırasında rahim ağzının bebeğin geçebileceği kadar genişlemesi; açılma.</li>
+      <li><strong>Efasman:</strong> Rahim ağzının doğum yaklaştıkça incelerek kısalması ve silinmesi süreci.</li>
+      <li><strong>Prezentasyon:</strong> Bebeğin doğum kanalına giren en öndeki kısmı (baş, makat, omuz gibi).</li>
+      <li><strong>Sefalik:</strong> Bebeğin doğum kanalına baş aşağı ve en uygun pozisyonda girmesi; baş gelişi.</li>
+      <li><strong>Makat Geliş:</strong> Bebeğin baş yerine kalça veya ayak kısımlarının doğum kanalına önce yerleşmesi.</li>
+      <li><strong>Sezaryen (C-Section):</strong> Bebeğin anne karnına yapılan cerrahi bir kesi ile doğurtulması yöntemi.</li>
+      <li><strong>Epizyotomi:</strong> Normal doğumu kolaylaştırmak ve kontrolsüz yırtıkları önlemek için vajina girişine yapılan küçük kesi.</li>
+      <li><strong>Vakum/Forseps:</strong> Doğumun son aşamasında bebeğin çıkışına yardımcı olmak için kullanılan medikal araçlar.</li>
+      <li><strong>İndüksiyon:</strong> Doğumun kendiliğinden başlamadığı durumlarda ilaçla sancıların başlatılması; suni sancı.</li>
+      <li><strong>Oksitosin:</strong> Vücutta doğal olarak bulunan, rahim kasılmalarını ve sütün gelmesini sağlayan hormon.</li>
+      <li><strong>Prolaktin:</strong> Doğum sonrası meme bezlerini uyararak süt üretimini başlatan ve sürdüren hormon.</li>
+      <li><strong>Kolostrum:</strong> Doğumdan hemen sonra gelen, bebeğin bağışıklığı için çok değerli olan ilk koyu sarı süt; ağız sütü.</li>
+      <li><strong>Laktasyon:</strong> Süt salgılanması ve bebeğin emzirilmesi sürecinin tamamı.</li>
+      <li><strong>Puerperium:</strong> Doğumdan sonraki ilk 42 günü (6 hafta) kapsayan iyileşme dönemi; lohusalık.</li>
+      <li><strong>Losi:</strong> Doğum sonrası rahimden gelen, gün geçtikçe rengi açılan akıntı ve kanama süreci.</li>
+      <li><strong>İnvolsüyon:</strong> Gebelik boyunca büyüyen rahmin, doğumdan sonra hızla küçülerek eski boyutuna dönme çabası.</li>
+      <li><strong>Postpartum Depresyon:</strong> Doğum sonrası hormon değişimleri ve yorgunluğa bağlı gelişebilen klinik üzüntü hali.</li>
     </ul>
 
     <h2>E. Bebek ve Tetkik Terimleri</h2>
     <ul>
-      <li><strong>Neonatal:</strong> Yenidoğan dönemi.</li>
-      <li><strong>Mekonyum:</strong> Bebeğin ilk dışkısı.</li>
-      <li><strong>Lanugo:</strong> Bebek vücudundaki ince tüyler.</li>
-      <li><strong>Verniks Kazeoza:</strong> Bebeğin cildini kaplayan koruyucu kremsi tabaka.</li>
-      <li><strong>Apgar Skoru:</strong> Yenidoğanın ilk sağlık değerlendirme puanı.</li>
-      <li><strong>USG (Ultrasonografi):</strong> Ses dalgalarıyla görüntüleme.</li>
-      <li><strong>NST (Non-Stress Test):</strong> Bebeğin kalp atışlarının izlendiği test.</li>
-      <li><strong>Amniyosentez:</strong> Amniyon sıvısından örnek alınması.</li>
-      <li><strong>Karyotip:</strong> Genetik harita.</li>
-      <li><strong>Fetal Kalp Atımı (FKA):</strong> Bebeğin kalp sesi.</li>
+      <li><strong>Neonatal:</strong> Bebeğin doğumundan sonraki ilk 28 günlük süreci kapsayan yenidoğan dönemi.</li>
+      <li><strong>Mekonyum:</strong> Bebeğin anne karnındayken bağırsaklarında biriken, doğumdan sonraki ilk koyu renkli dışkı.</li>
+      <li><strong>Lanugo:</strong> Bebeği anne karnında sıcak tutan ve genellikle doğuma yakın dökülen ince, ipeksi tüyler.</li>
+      <li><strong>Verniks Kazeoza:</strong> Yenidoğanın cildini suyun etkilerinden koruyan, beyaz renkli, peynirimsi koruyucu tabaka.</li>
+      <li><strong>Apgar Skoru:</strong> Bebeğin doğar doğmaz kalp atışı, solunum ve kas tonusu gibi kriterlerle yapılan ilk sağlık puanlaması.</li>
+      <li><strong>USG (Ultrasonografi):</strong> Yüksek frekanslı ses dalgaları kullanılarak bebeğin rahim içindeki durumunu görüntüleme yöntemi.</li>
+      <li><strong>NST (Non-Stress Test):</strong> Bebeğin kalp atışlarının ve hareketlerinin sancı yokken elektronik cihazla izlenmesi.</li>
+      <li><strong>Amniyosentez:</strong> İnce bir iğne yardımıyla bebeğin içinde bulunduğu sıvıdan genetik inceleme için örnek alınması.</li>
+      <li><strong>Karyotip:</strong> Hücrelerdeki kromozomların sayı ve yapı bakımından laboratuvar ortamında incelenmiş haritası.</li>
+      <li><strong>Fetal Kalp Atımı (FKA):</strong> Ultrason veya doppler cihazı ile duyulan bebeğin kalp atış hızı.</li>
     </ul>
 
-    <!-- Mevcut içerik / sözlük listesi buraya -->
+    <h2>F. Anne ve Bebek Bakımı Terimleri</h2>
+    <ul>
+      <li><strong>Kanguru Bakımı:</strong> Bebeğin sadece alt beziyle, annenin veya babanın çıplak göğsüne yatırılarak yapılan ten tene temas yöntemi; bebeğin sıcaklığını ve güvenini artırır.</li>
+      <li><strong>Aktif Emzirme:</strong> Bebeğin memeyi sadece ağzında tutması değil, etkin bir şekilde çenesini kullanarak sütü çekmesi ve yutkunma sesinin duyulması durumu.</li>
+      <li><strong>Bebek Aknesi:</strong> Yenidoğan bebeklerde anneden geçen hormonlar nedeniyle genellikle yüz bölgesinde oluşan geçici sivilcelerdir.</li>
+      <li><strong>Konak (Seboreik Dermatit):</strong> Bebeklerin kafa derisinde görülen, sarımsı, kabuksu ve genellikle kendiliğinden geçen zararsız deri döküntüleri.</li>
+      <li><strong>Gaz Sancısı (İnfantil Kolik):</strong> Sağlıklı bir bebeğin haftada en az 3 gün, günde 3 saatten fazla süren, nedeni tam bilinmeyen yoğun ağlama nöbetleri.</li>
+      <li><strong>Persentil Tablosu:</strong> Bebeğin boy, kilo ve baş çevresi gelişiminin aynı yaş ve cinsiyetteki diğer bebeklere göre hangi dilimde olduğunu gösteren büyüme eğrisi.</li>
+      <li><strong>Uyku Eğitimi:</strong> Bebeğin uyku döngüleri arasında kendi kendine uykuya dalma becerisini kazanması için uygulanan çeşitli pedagojik yöntemler.</li>
+      <li><strong>Ek Gıda Dönemi:</strong> Bebeğin 6. ayını tamamladıktan sonra anne sütüne ek olarak sebze, meyve ve tahıllarla tanışmaya başladığı hassas süreç.</li>
+      <li><strong>BLW (Baby Led Weaning):</strong> Bebeğin püre yerine, önüne konulan uygun boyutlardaki yumuşak gıdaları kendi elleriyle yemesine olanak tanıyan beslenme yöntemi.</li>
+      <li><strong>Sarılık (İkter):</strong> Yenidoğanlarda kandaki bilirubin miktarının artması sonucu ciltte ve göz aklarında görülen sararma; fototerapi ile tedavi edilebilir.</li>
+      <li><strong>Moro Refleksi:</strong> Bebeklerin ani bir uyaran karşısında kollarını hızla dışa açıp sonra geri birleştirme refleksi; sinir sistemi gelişiminin bir göstergesidir.</li>
+      <li><strong>Fontanel (Bıngıldak):</strong> Bebeğin kafasındaki kemiklerin henüz birleşmediği, beynin büyümesine imkan tanıyan yumuşak bölgeler; genellikle 18 aya kadar kapanır.</li>
+      <li><strong>Gümüş Göğüs Kapakları:</strong> Emzirme döneminde meme uçlarında oluşan yaraları önlemek ve iyileşmeyi hızlandırmak için kullanılan doğal koruyucu metal kapaklar.</li>
+      <li><strong>Lanolin Krem:</strong> Emzirme sırasında oluşan meme ucu kuruluklarını ve çatlaklarını nemlendirmek için kullanılan, yıkama gerektirmeyen koyun yünü yağı içerikli merhem.</li>
+      <li><strong>Süt Sağma (Ekspresyon):</strong> Göğüste biriken sütün bebek emmediğinde veya ihtiyaç duyulduğunda pompa yardımıyla dışarı boşaltılarak saklanması işlemi.</li>
+    </ul>
 
-<!-- Lavli İndir butonu (ana sayfaya dön butonunun yerine) -->
-<div style="width: 100%; display: flex; justify-content: center; margin: 25px 0;">
-  <div style="text-align: center;">
-    <div style="margin-bottom: 8px; font-size: 14px; color: #7028e4; font-weight: 600;">
-      Daha fazlası için
+    <div class="download-section">
+      <div style="text-align: center;">
+        <div style="margin-bottom: 8px; font-size: 14px; color: #7028e4; font-weight: 600;">
+          Daha fazlası için
+        </div>
+        <a href="https://onelink.to/ucy3z8" class="download-btn">Lavli’yi İndir</a>
+      </div>
     </div>
-    <a href="https://onelink.to/ucy3z8" 
-       style="display: inline-block; padding: 12px 25px; background: #7028e4; color: #fff; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.2s;">
-       Lavli’yi İndir
-    </a>
   </div>
-</div>
 
-<div class="disclaimer">
-  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
-</div>
+  <div class="disclaimer">
+Önemli Uyarı: Bu platformda sunulan içerikler genel bilgilendirme amaçlıdır. Her gebelik süreci benzersizdir. Tıbbi durumunuzla ilgili en doğru bilgi ve yönlendirme için lütfen hekiminizle irtibatta kalınız. Bu site asla tıbbi gerçeklik, tanılama ve öneri içermez.    <br>
+    <a href="https://lavliapp.com/privacy/" target="_blank" style="color:#aaa; font-size:11px; text-decoration:none; display:block; margin-top:10px;">Gizlilik Politikası</a>
+  </div>
 </body>
 </html>
