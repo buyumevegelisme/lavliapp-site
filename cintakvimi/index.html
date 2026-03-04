@@ -35,8 +35,9 @@ html, body {
 .tagline { font-size:16px; font-weight:400; color:#666; margin-bottom:15px; }
 .subtitle { font-size:14px; font-weight:600; color:#888; margin-bottom:20px; }
 
-input, select { padding:12px; font-size:14px; border-radius:12px; border:1px solid #ccc; width:100%; margin-bottom:10px; }
-button { padding:12px 0; width:100%; font-weight:700; border-radius:15px; border:none; background:#7028e4; color:white; font-size:14px; margin-bottom:15px; cursor:pointer; }
+label { font-weight:600; color:#888; margin-bottom:5px; display:block; }
+input, select { padding:12px; font-size:14px; border-radius:12px; border:1px solid #ccc; width:100%; margin-bottom:15px; box-sizing:border-box; }
+button { padding:12px 0; width:100%; font-weight:700; border-radius:15px; border:none; background:#7028e4; color:white; font-size:14px; margin-bottom:20px; cursor:pointer; }
 #results { margin-top:10px; font-size:14px; color:#333; line-height:1.3; font-weight:600; }
 .download-section { margin-top:20px; text-align:center; }
 .download-section p { margin-bottom:10px; font-size:14px; color:#7028e4; font-weight:600; }
@@ -61,10 +62,10 @@ button { padding:12px 0; width:100%; font-weight:700; border-radius:15px; border
     <img src="https://i.hizliresim.com/b9pkx8v.png?v=3" alt="Logo" class="logo">
     <div class="app-name">Lavli</div>
     <div class="tagline">Çin Takvimi Cinsiyet Hesaplayıcı 🎉</div>
-    <div class="subtitle">Gebelikte bebeğinizin cinsiyetini tahmini olarak görebilirsiniz (eğlencelik teori)</div>
+    <div class="subtitle">Gebelikte bebeğinizin cinsiyetini tahmini olarak görebilirsiniz (Eğlenceli Teori)</div>
 
     <label for="motherAge">Anne yaşı (gebelik yılı):</label>
-    <input type="number" id="motherAge" min="15" max="50" placeholder="Yaşınızı girin">
+    <input type="number" id="motherAge" min="18" max="50" placeholder="Yaşınızı girin">
 
     <label for="conceptionMonth">Tahmini döllenme ayı:</label>
     <select id="conceptionMonth">
@@ -94,7 +95,7 @@ button { padding:12px 0; width:100%; font-weight:700; border-radius:15px; border
 </div>
 
 <div class="disclaimer">
-  Bu içerik yalnızca eğlence amaçlıdır. Çin takvimi teorisine dayalı tahminler, tıbbi doğruluk garanti etmez. Her zaman uzman görüşüne danışınız.
+  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
 </div>
 
 <script>
@@ -138,7 +139,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   if (age < 18 || age > 45) { alert("Yaş 18-45 arası olmalıdır."); return; }
 
   const gender = chineseCalendar[age][month-1];
-  document.getElementById('results').innerHTML = `Çin takvimi teorisine göre bebeğin <strong>${gender}</strong> gibi görünüyor`;
+  document.getElementById('results').innerHTML = `Çin takvimi teorisine göre bebeğin <strong>${gender}</strong> gibi görünüyor 🥰`;
 });
 </script>
 
