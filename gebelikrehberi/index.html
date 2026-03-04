@@ -59,7 +59,7 @@
             font-size: 32px;
             font-weight: 800;
             margin: 0;
-            color: #000000; /* Lavli yazısı siyah yapıldı */
+            color: #000000;
             letter-spacing: -1px;
         }
 
@@ -159,8 +159,8 @@
             display: inline-block;
             text-decoration: none;
             padding: 14px 35px;
-            background: var(--accent-color); /* İndirme butonu mor yapıldı */
-            color: #ffffff; /* İçi beyaz yapıldı */
+            background: var(--accent-color);
+            color: #ffffff;
             border-radius: 18px;
             font-weight: 700;
             font-size: 15px;
@@ -204,11 +204,7 @@
             <div class="custom-select-wrapper">
                 <select id="weekSelect">
                     <option value="">Kaçıncı haftadasınız?</option>
-                    <option value="case1">Gebeliğin 1. Haftası</option>
-                    <option value="case2">Gebeliğin 2. Haftası</option>
-                    <option value="case3">Gebeliğin 3. Haftası</option>
-                    <option value="case4">Gebeliğin 4. Haftası</option>
-                </select>
+                    </select>
             </div>
             <button id="showGuide" class="btn-primary">Rehberi Görüntüle</button>
         </div>
@@ -220,7 +216,7 @@
         </div>
 
         <div class="download-footer">
-            <p>Daha fazlası için uygulamayı keşfedin</p>
+            <p>Daha detaylı analiz ve günlük gebelik takibi için :</p>
             <a href="https://onelink.to/ucy3z8" target="_blank" class="btn-download">
                 Lavli'yi İndir
             </a>
@@ -230,16 +226,61 @@
     <div class="legal-disclaimer">
         <strong>Önemli Uyarı:</strong> Bu platformda sunulan içerikler genel bilgilendirme amaçlıdır. 
         Her gebelik süreci benzersizdir. Tıbbi durumunuzla ilgili en doğru bilgi ve yönlendirme için 
-        lütfen hekiminizle irtibatta kalınız.
+        lütfen hekiminizle irtibatta kalınız. Bu site asla tıbbi gerçeklik, tanılama ve öneri içermez.
     </div>
 </div>
 
 <script>
+// Select kutusunu 1'den 40'a kadar otomatik dolduralım
+const selectElement = document.getElementById('weekSelect');
+for (let i = 1; i <= 40; i++) {
+    let option = document.createElement('option');
+    option.value = 'week' + i;
+    option.text = 'Gebeliğin ' + i + '. Haftası';
+    selectElement.appendChild(option);
+}
+
 const guides = {
-    case1: "Gebeliğin 1. Haftası\n\nBu hafta aslında vücudunuzun yeni bir döngüye hazırlandığı dönemdir. Henüz teknik olarak hamile sayılmasanız da, rahim duvarınız kendini yenilemeye başlar. \n\nBol su içmeyi ve folik asit takviyesi hakkında doktorunuza danışmayı unutmayın.",
-    case2: "Gebeliğin 2. Haftası\n\nVücudunuz yumurtlama dönemine giriyor. Hormon seviyelerinizdeki artış kendinizi daha enerjik hissettirebilir. Sağlıklı beslenme düzenine sadık kalmak bu süreçte kritik önem taşır.",
-    case3: "Gebeliğin 3. Haftası\n\nMüjde! Döllenme bu hafta gerçekleşiyor. Hücreler hızla bölünerek yeni bir hayatın temelini atıyor. Hafif kasık ağrıları hissetmeniz oldukça normaldir.",
-    case4: "Gebeliğin 4. Haftası\n\nBebeğiniz rahim duvarına yerleşiyor. Bu aşamada hassasiyetiniz artabilir. Test yapmak için heyecanlı olabilirsiniz, ancak en doğru sonuç için birkaç gün daha beklemeniz önerilir."
+    week1: 'Bu hafta teknik olarak henüz yeni gebesiniz ; vücudunuz son adet döngüsüyle birlikte yeni bir yumurta hazırlıyor ve rahim duvarını olası bir yerleşme için kalınlaştırıyor. Bu dönemde folikül uyarıcı hormonlar (FSH) aktifleşerek en sağlıklı yumurtanın seçilmesini sağlar. 🌱\n\nBebeğim neye benziyor? Henüz bir hücre potansiyeli!\n\nOrtalama boy: Ölçülemez derecede küçük.',
+    week2: 'Döllenme bu haftanın sonunda gerçekleşir; sperm ve yumurta birleşerek tek hücreli "zigot"u oluşturur. Bu minik yapı, bebeğinizin tüm genetik haritasını taşırken aynı zamanda hızla fallop tüplerinden rahme doğru yolculuğuna başlar. 🐣\n\nBebeğim neye benziyor? Mikroskobik bir nokta!\n\nOrtalama boy: 0.1 mm',
+    week3: 'Hızla bölünen hücreler "blastokist" olarak rahme ulaşır ve yerleşir. Bu yerleşme ile birlikte vücudunuz hCG hormonu üretmeye başlar ve embriyo, organ taslaklarını oluşturacak üç temel doku katmanına ayrılır. ❤️\n\nBebeğim neye benziyor? Bir toplu iğne başı kadar!\n\nOrtalama boy: 0.15 mm',
+    week4: 'Embriyo artık rahim duvarına sıkıca tutundu; plasenta ve göbek kordonu işlev görmeye başlıyor. Bu hafta sinir sistemi, kemik ve kas yapısının temelleri atılırken ilkel bir kan dolaşım sistemi de kurulmaya başlar. 🏗️\n\nBebeğim neye benziyor? Haşhaş tohumu!\n\nOrtalama boy: 1 mm',
+    week5: 'Bebeğinizin kalbi bu hafta ilk ilkel atışlarını yapmaya başlıyor. Nöral tüp (beyin ve omurilik) hızla şekillenirken, bebeğin ektoderm tabakasından cildi ve sinir sistemi, endoderm tabakasından ise iç organları gelişmeye başlar. 🧠\n\nBebeğim neye benziyor? Susam tanesi!\n\nOrtalama boy: 2-3 mm',
+    week6: 'Yüz hatları netleşmeye başlıyor; göz çukurları ve kulak kabartıları beliriyor. Akciğerler, karaciğer ve böbrekler taslak halinde oluşurken, optik veziküller sayesinde gelecekteki gözlerin temeli atılmış olur. 👶\n\nBebeğim neye benziyor? Mercimek tanesi!\n\nOrtalama boy: 5-6 mm',
+    week7: 'Beyin hücreleri inanılmaz bir hızla (dakikada 100 bin hücre!) üretiliyor. El ve ayaklar küçük kürekçikler şeklinde uzamaya başlarken, sindirim sistemi ve pankreas gibi yaşamsal organlar hızla özelleşmeye devam eder. 📅\n\nBebeğim neye benziyor? Yaban mersini!\n\nOrtalama boy: 1 cm',
+    week8: 'Embriyonik dönemin sonuna yaklaşılıyor; kıkırdak yapısı kemikleşme sürecine giriyor. Bebeğiniz artık rahim içinde refleks hareketleri yapabiliyor ve vücudundaki neredeyse tüm temel anatomik yapılar yerli yerine oturmuş durumda. 👀\n\nBebeğim neye benziyor? Barbunya tanesi!\n\nOrtalama boy: 1.6 cm',
+    week9: 'Bebeğiniz artık bir "fetüs"; kalp dört odacıklı yapısını tamamladı. Göz kapakları tamamen oluştu ancak birbirine yapışık durumda; bu hafta itibarıyla kasları kontrol eden sinir iletimleri ilk kez aktif hale gelir. 💃\n\nBebeğim neye benziyor? Kiraz!\n\nOrtalama boy: 2.3 cm',
+    week10: 'Kritik gelişim aşaması tamamlandı; artık büyüme hızı artıyor. Böbrekler idrar üretmeye başladı ve bebeğiniz amniyotik sıvıyı yutma-boşaltma döngüsüne girerek sindirim ve boşaltım antrenmanlarına resmen başladı. 🤏\n\nBebeğim neye benziyor? Çilek!\n\nOrtalama boy: 3.1 cm',
+    week11: 'Bebeğiniz artık hıçkırabiliyor; bu diyafram gelişiminin sağlıklı bir işaretidir. Tırnaklar ve saç kökleri oluşmaya başlarken, bebeğiniz rahim içinde gerinme ve takla atma gibi karmaşık hareketleri yapabilecek güce ulaşır. 🥦\n\nBebeğim neye benziyor? Brüksel lahanası!\n\nOrtalama boy: 4.1 cm',
+    week12: 'Dış cinsel organlar şekillenmeye başladı ve refleksleri oldukça gelişti. Elini ağzına götürebiliyor, parmaklarını kıvırabiliyor ve artık bağırsakları karın boşluğundaki kalıcı yerine tamamen yerleşmiş durumda. 💖\n\nBebeğim neye benziyor? Misket limonu!\n\nOrtalama boy: 5.4 cm',
+    week13: 'İkinci trimestere hoş geldiniz; bebeğinizin ses telleri oluşuyor ve parmak izleri şekillenmeye başlıyor. Plasenta artık bebeğin beslenmesi ve oksijen alması görevini tamamen üstlenerek hormonal dengeyi sağlar. 🎶\n\nBebeğim neye benziyor? Limon!\n\nOrtalama boy: 7.4 cm',
+    week14: 'Bebeğinizin yüz kasları çalışmaya başladı; kaşlarını çatabilir veya gülümseyebilir. Vücudu "lanugo" adı verilen ince tüylerle kaplanırken, tiroid bezi çalışmaya başlayarak hormon üretimine ilk adımını atar. 🌼\n\nBebeğim neye benziyor? Nektari!\n\nOrtalama boy: 8.7 cm',
+    week15: 'Işığa karşı duyarlılık başlıyor; gözleri kapalı olsa da dışarıdaki ışık değişimlerini fark edebilir. İskelet sistemi hızla kemikleşiyor ve bu hafta itibarıyla bebeğin kulakları sesleri duymaya hazır hale geliyor. 🏊‍♀️\n\nBebeğim neye benziyor? Elma!\n\nOrtalama boy: 10 cm',
+    week16: 'Bebeğinizin başı daha dik duruyor ve gözleri yüzün ön kısmına doğru kaydı. Dolaşım sistemi tam kapasite çalışıyor; kalbi günde yaklaşık 25-30 litre kan pompalayarak tüm vücudu besliyor. 🎤\n\nBebeğim neye benziyor? Avokado!\n\nOrtalama boy: 11.6 cm',
+    week17: 'Vücut, doğum sonrası ısı dengesi için kritik olan kahverengi yağ dokusunu depolamaya başlıyor. Ter bezleri oluşurken, bebeğin kıkırdak iskeleti daha güçlü ve dayanıklı bir kemik yapısına dönüşmeye devam eder. 🥗\n\nBebeğim neye benziyor? Armut!\n\nOrtalama boy: 13 cm',
+    week18: 'Bebeğinizin parmak uçlarındaki sinir uçları tamamen gelişti; artık dokunma duyusu çok keskin. Eğer bir kız ise yumurtalıklarında milyonlarca yumurta hücresi, erkek ise testisleri bu hafta olması gereken konuma ilerler. 🌈\n\nBebeğim neye benziyor? Tatlı patates!\n\nOrtalama boy: 14.2 cm',
+    week19: 'Beyinde duyular için özel alanlar gelişiyor. Bebeğin cildi, onu sıvı içinde uzun süre kalmaktan koruyan kremsi "vernix caseosa" tabakasıyla kaplanırken, süt dişlerinin altında kalıcı diş taslakları bile oluşmaya başlar. 🌀\n\nBebeğim neye benziyor? Büyük bir mango!\n\nOrtalama boy: 15.3 cm',
+    week20: 'Yolun yarısındasınız; bebeğiniz artık düzenli uyku-uyanıklık döngülerine girdi. Sindirim sistemi "mekonyum" adı verilen ilk dışkıyı üretirken, annenin sesini diğer seslerden ayırt etme yetisi kazanmaya başlar. 💕\n\nBebeğim neye benziyor? Muz!\n\nOrtalama boy: 25 cm (Baştan ayağa)',
+    week21: 'Bebek artık amniyotik sıvıdan sınırlı miktarda şeker emmeye başlıyor. Hareketleri daha koordineli hale geldi ve bacakları vücudunun geri kalanına göre daha orantılı bir uzunluğa ulaştı; artık tekmelerini daha net hissedebilirsiniz. 🎶\n\nBebeğim neye benziyor? Havuç!\n\nOrtalama boy: 26.7 cm\n\nOrtalama kilo: 360 g',
+    week22: 'Göz kapakları ve kaşları tamamen oluştu; dokunma duyusu sayesinde kendi yüzüne dokunarak dünyayı keşfediyor. Pankreas, vücudun şeker dengesini sağlayacak olan insülin hormonunu bu hafta üretmeye başlar. 🧸\n\nBebeğim neye benziyor? Hindistan cevizi!\n\nOrtalama boy: 27.8 cm\n\nOrtalama kilo: 430 g',
+    week23: 'Akciğerlerdeki kan damarları dış dünyaya hazırlanmak için gelişiyor. Bebeğin orta kulaktaki kemikleri sertleştiği için artık dışarıdaki seslere, müziğe ve ani gürültülere hareketleriyle tepki verebilir. 💇‍♂️\n\nBebeğim neye benziyor? Greyfurt!\n\nOrtalama boy: 29 cm\n\nOrtalama kilo: 500 g',
+    week24: 'Bebeğinizin cildi hala şeffaf ancak vücudu hızla dolmaya başlıyor. Akciğerlerde hava keseciklerinin sönmesini engelleyen "sürfaktan" maddesi üretilmeye başlanarak solunum sistemi hayati bir aşamayı geçer. 🤸‍♀️\n\nBebeğim neye benziyor? Mısır!\n\nOrtalama boy: 30 cm\n\nOrtalama kilo: 600 g',
+    week25: 'Bebeğiniz artık ellerini yumruk yapabiliyor ve nesneleri kavrayabiliyor. Burun delikleri açılmaya başladı ve bebek, koku duyusunun temeli olan amniyotik sıvı içindeki kimyasal molekülleri algılama yetisi kazanır. 🧠\n\nBebeğim neye benziyor? Karnabahar!\n\nOrtalama boy: 34.6 cm\n\nOrtalama kilo: 660 g',
+    week26: 'Gözleri bu hafta ilk kez açılıyor ve ışığa tepki veriyor. Beyin dalgaları, uykudaki bir yetişkininkine benzer karmaşık grafikler sergilemeye başlarken, işitme sinirleri tamamen olgunlaşmıştır. 📣\n\nBebeğim neye benziyor? Kara lahana!\n\nOrtalama boy: 35.6 cm\n\nOrtalama kilo: 760 g',
+    week27: 'Üçüncü trimestere hoş geldiniz; beyin dokusu hızla artıyor. Bebeğinizin akciğerleri artık dış dünyada oksijen alıp verme yeteneğini test eden ritmik hıçkırık ve soluma egzersizlerini daha sık yapar. 🤾‍♀️\n\nBebeğim neye benziyor? Patlıcan!\n\nOrtalama boy: 36.6 cm\n\nOrtalama kilo: 875 g',
+    week28: 'Bebeğiniz artık gözlerini kırpabiliyor ve kirpikleri oldukça uzadı. Kemik iliği, alyuvar üretimi görevini karaciğerden tamamen devraldı ve bağışıklık sistemi ilk koruyucu hücrelerini üretmeye başladı. 👀\n\nBebeğim neye benziyor? Büyük bir kabak!\n\nOrtalama boy: 37.6 cm\n\nOrtalama kilo: 1000 g',
+    week29: 'Bebeğinizin başı, gelişen beyin lobları için yer açmak amacıyla büyüyor. Vücudun ihtiyacı olan kalsiyum, demir ve C vitamini deposu bu dönemde zirveye çıkar; kemikler iyice sertleşmeye devam eder. 💪\n\nBebeğim neye benziyor? Balkabağı!\n\nOrtalama boy: 38.6 cm\n\nOrtalama kilo: 1150 g',
+    week30: 'Amniyotik sıvı miktarı zirveye ulaştı; artık bebek büyüdükçe bu alan daralacaktır. Bebeğin kemik iliği artık tamamen fonksiyoneldir ve kendi kan hücrelerini eksiksiz bir şekilde üretme kapasitesine ulaşmıştır. ✋\n\nBebeğim neye benziyor? Lahana!\n\nOrtalama boy: 40 cm\n\nOrtalama kilo: 1300 g',
+    week31: 'Bebeğiniz artık başını bir yandan diğer yana çevirebiliyor. Beyin, milyarlarca nöron arası bağlantı kurarak öğrenme ve hafıza yetilerinin temelini atarken, bebeğin akciğerleri de hızla olgunlaşmaya devam eder. 🎉\n\nBebeğim neye benziyor? Hindistan cevizi!\n\nOrtalama boy: 41 cm\n\nOrtalama kilo: 1500 g',
+    week32: 'Bebeğiniz artık tamamen bir bebek görüntüsünde; cildi altındaki yağ tabakası sayesinde pürüzsüzleşti. Lanugo tüyleri dökülmeye başladı ve bebek, vücut sıcaklığını doğumdan sonra kendisi ayarlayabilecek yetiye kavuşuyor. 🚼\n\nBebeğim neye benziyor? Kavun!\n\nOrtalama boy: 42 cm\n\nOrtalama kilo: 1700 g',
+    week33: 'Bağışıklık sistemi güçleniyor; plasenta aracılığıyla sizden değerli antikorlar alıyor. Kafatası kemikleri, doğum kanalından geçerken esneyebilmesi için henüz birleşmemiştir ve bu esneklik beyin gelişimine de imkan tanır. 💪\n\nBebeğim neye benziyor? Ananas!\n\nOrtalama boy: 43.5 cm\n\nOrtalama kilo: 1900 g',
+    week34: 'Akciğerler ve merkezi sinir sistemi tam olgunluğa ulaştı. Bebeğiniz uyurken REM uykusuna girerek rüya görmeye başlamış olabilir; bu hafta doğan bebeklerin çoğu dış dünyada ekstra destek almadan nefes alabilir. 🌬️\n\nBebeğim neye benziyor? Kavun!\n\nOrtalama boy: 45 cm\n\nOrtalama kilo: 2150 g',
+    week35: 'Bebeğinizin böbrekleri tamamen gelişti ve karaciğeri artık atık ürünleri işleyebiliyor. Fiziksel alan daraldığı için hareketleri "tekme"den ziyade "itme ve dönme" şeklinde hissedilir; bu da kaslarının güçlendiğini gösterir. 🎭\n\nBebeğim neye benziyor? Honeydew kavunu!\n\nOrtalama boy: 46 cm\n\nOrtalama kilo: 2400 g',
+    week36: 'Bebeğiniz artık erken dönem tam gün sınırında. Yanaklarındaki yağ birikimi emme kaslarını destekleyecek kadar dolgunlaştı ve vücudu, doğum sonrası enerji ihtiyacı için glikojen depolamaya başladı. 🎈\n\nBebeğim neye benziyor? Papaya!\n\nOrtalama boy: 47 cm\n\nOrtalama kilo: 2600 g',
+    week37: 'Bebeğiniz artık "full-term" (tam gün) sayılır. Koordinasyonu o kadar gelişti ki küçük parmaklarıyla nesneleri sıkıca kavrayabilir; bağırsaklarında ise ilk dışkısı olan mekonyum tamamen birikmiş durumdadır. ✨\n\nBebeğim neye benziyor? Büyük bir marul!\n\nOrtalama boy: 48.5 cm\n\nOrtalama kilo: 2850 g',
+    week38: 'Bebeğinizin görme yetisi gelişti; doğumdan sonra yaklaşık 20-30 cm mesafeyi net görebilecek durumda. Lanugo tüylerinin çoğu döküldü ve bu dökülen tüyler amniyotik sıvı ile karışarak bebeğin sindirim sistemini uyarır. 🌬️\n\nBebeğim neye benziyor? Kış kabağı!\n\nOrtalama boy: 49.5 cm\n\nOrtalama kilo: 3100 g',
+    week39: 'Bebeğinizin fiziksel gelişimi tamamlandı; artık sadece gün sayıyor. Plasenta, bebeğe doğum sonrası ilk birkaç gün yetecek kadar bağışıklık hücresi transfer etmeye devam ederken, bebeğin göğüs kafesi oldukça esnekleşti. 🎈\n\nBebeğim neye benziyor? Karpuz!\n\nOrtalama boy: 50.5 cm\n\nOrtalama kilo: 3300 g',
+    week40: 'Büyük gün geldi; bebeğinizin vücudundaki yağ oranı %15 civarında olup bu onu dış dünyadaki ani ısı değişimlerinden koruyacak. Kafatası kemikleri hala esnektir ve bebeğiniz, sizin sesinizi duyduğunda tanıyacak bilişsel seviyeye ulaşmıştır. 🤱\n\nBebeğim neye benziyor? Tam olgunlaşmış bir karpuz!\n\nOrtalama boy: 51-53 cm\n\nOrtalama kilo: 3400-3600 g'
 };
 
 document.getElementById('showGuide').addEventListener('click', function() {
