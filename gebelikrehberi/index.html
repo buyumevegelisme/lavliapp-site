@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Lavli Gebelik Rehberi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<link rel="icon" type="image/png" href="https://i.hizliresim.com/b9pkx8v.png?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin:0 !important;
+  padding:0 !important;
+  width:100%;
+  min-height:100%;
+  font-family:'Inter', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 40%, #a18cd1 70%, #7028e4 100%);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  flex-direction:column;
+}
+
+.container {
+  width:92%;
+  max-width:400px;
+  margin:20px auto;
+  color:#333;
+}
+
+h1,h2,h3,p {
+  margin:0 0 12px 0;
+}
+
+label {
+  font-size:14px;
+  font-weight:600;
+  color:#888;
+}
+
+select, button {
+  padding:12px;
+  font-size:14px;
+  border-radius:12px;
+  border:1px solid #ccc;
+  width:100%;
+  margin-bottom:15px;
+}
+
+button {
+  background:#7028e4;
+  color:#fff;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#guide {
+  margin-top:15px;
+  padding:15px;
+  border-radius:20px;
+  background: rgba(255,255,255,0.9);
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
+  line-height:1.5;
+}
+
+.download-section {
+  margin-top:20px;
+  text-align:center;
+}
+
+.download-section p {
+  margin-bottom:10px;
+  font-size:14px;
+  color:#7028e4;
+  font-weight:600;
+}
+
+.disclaimer {
+  font-size:10px;
+  color:#eee;
+  text-align:center;
+  padding:5px 0;
+  margin:10px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="disclaimer">
+  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
+</div>
+
+<div class="container">
+  <h1>Lavli Gebelik Rehberi</h1>
+  <p>Haftanızı seçin ve rehberi görün</p>
+
+  <label for="weekSelect">Hafta Seçimi:</label>
+  <select id="weekSelect">
+    <option value="">Seçiniz</option>
+    <option value="case1">1. Hafta</option>
+    <option value="case2">2. Hafta</option>
+    <!-- Sonraki haftalar için aynı formatta ekleyebilirsin -->
+  </select>
+
+  <button id="showGuide">Göster</button>
+
+  <div id="guide">
+    Lütfen bir hafta seçin.
+  </div>
+
+  <div class="download-section">
+    <p>Daha detaylı bilgiler için</p>
+    <a href="https://onelink.to/ucy3z8" target="_blank"><button>Lavli'yi İndir</button></a>
+  </div>
+</div>
+
+<div class="disclaimer">
+  Bu sitede yer alan bilgiler yalnızca bilgilendirme amaçlıdır. Tıbbi tanı ve tedavi için mutlaka bir sağlık uzmanına danışınız.
+</div>
+
+<script>
+// Örnek case verileri
+const guides = {
+  case1: "1. Hafta Rehberi:\n- Rahim hazırlanıyor.\n- Hormonal değişimler başlıyor.\n- Hafif yorgunluk normaldir.\n\n(Dilersen buraya detaylı bilgiyi ekleyebilirsin)",
+  case2: "2. Hafta Rehberi:\n- Yumurtlama için hazırlık.\n- Hormonlar artıyor.\n- Beslenmeye dikkat edilmeli.\n\n(Burada ikinci haftayı doldurabilirsin)"
+  // case3 - case40 sen dolduracaksın
+};
+
+document.getElementById('showGuide').addEventListener('click', function() {
+  const week = document.getElementById('weekSelect').value;
+  const guideDiv = document.getElementById('guide');
+
+  if(!week){
+    guideDiv.innerText = "Lütfen bir hafta seçin.";
+    return;
+  }
+
+  guideDiv.innerText = guides[week] || "Bu hafta için rehber henüz eklenmedi.";
+});
+</script>
+
+</body>
+</html>
