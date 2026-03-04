@@ -9,8 +9,8 @@
 
 <style>
 html, body {
-  margin:0 !important;
-  padding:0 !important;
+  margin:0;
+  padding:0;
   width:100%;
   min-height:100%;
   font-family:'Inter', sans-serif;
@@ -22,67 +22,112 @@ html, body {
 }
 
 .container {
-  width:92%;
-  max-width:400px;
+  width:90%;
+  max-width:420px;
   margin:20px auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   color:#333;
 }
 
-h1,h2,h3,p {
-  margin:0 0 12px 0;
-}
-
-label {
-  font-size:14px;
-  font-weight:600;
-  color:#888;
-}
-
-select, button {
-  padding:12px;
-  font-size:14px;
-  border-radius:12px;
-  border:1px solid #ccc;
-  width:100%;
-  margin-bottom:15px;
-}
-
-button {
-  background:#7028e4;
-  color:#fff;
-  border:none;
+h1 {
+  font-size:28px;
   font-weight:700;
+  color:#fff;
+  text-align:center;
+  margin-bottom:8px;
+}
+
+h2 {
+  font-size:20px;
+  font-weight:600;
+  color:#fff;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.disclaimer {
+  font-size:12px;
+  color:#fff;
+  text-align:center;
+  margin:10px 0;
+  line-height:1.4;
+  font-weight:500;
+}
+
+.select-wrapper {
+  width:100%;
+  margin-bottom:20px;
+}
+
+select {
+  width:100%;
+  padding:15px;
+  font-size:16px;
+  border-radius:18px;
+  border:none;
+  outline:none;
+  background:rgba(255,255,255,0.95);
+  box-shadow:0 6px 20px rgba(0,0,0,0.2);
+  appearance:none;
+  -webkit-appearance:none;
+  text-align:center;
+  font-weight:600;
+  color:#333;
   cursor:pointer;
 }
 
-#guide {
-  margin-top:15px;
+button {
   padding:15px;
-  border-radius:20px;
-  background: rgba(255,255,255,0.9);
-  box-shadow:0 15px 30px rgba(0,0,0,0.2);
+  width:100%;
+  font-size:16px;
+  font-weight:700;
+  border-radius:18px;
+  border:none;
+  background:#7028e4;
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+  transition:0.3s;
+}
+
+button:hover {
+  background:#5a1fc8;
+}
+
+.guide-card {
+  width:100%;
+  background:rgba(255,255,255,0.95);
+  border-radius:25px;
+  padding:20px;
+  margin-top:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
   line-height:1.5;
+  color:#333;
+  font-weight:500;
+  text-align:left;
+  white-space:pre-line;
 }
 
 .download-section {
   margin-top:20px;
+  width:100%;
   text-align:center;
 }
 
 .download-section p {
   margin-bottom:10px;
   font-size:14px;
-  color:#7028e4;
+  color:#fff;
   font-weight:600;
 }
 
-.disclaimer {
-  font-size:10px;
-  color:#eee;
-  text-align:center;
-  padding:5px 0;
-  margin:10px 0;
+.download-section button {
+  width:60%;
+  margin:0 auto;
 }
+
 </style>
 </head>
 
@@ -94,25 +139,28 @@ button {
 
 <div class="container">
   <h1>Lavli Gebelik Rehberi</h1>
-  <p>Haftanızı seçin ve rehberi görün</p>
+  <h2>Haftanızı seçin ve rehberi görün</h2>
 
-  <label for="weekSelect">Hafta Seçimi:</label>
-  <select id="weekSelect">
-    <option value="">Seçiniz</option>
-    <option value="case1">1. Hafta</option>
-    <option value="case2">2. Hafta</option>
-    <!-- Sonraki haftalar için aynı formatta ekleyebilirsin -->
-  </select>
+  <div class="select-wrapper">
+    <select id="weekSelect">
+      <option value="">Hafta Seçiniz</option>
+      <option value="case1">1. Hafta</option>
+      <option value="case2">2. Hafta</option>
+      <!-- case3 - case40 sonrasında ekle -->
+    </select>
+  </div>
 
   <button id="showGuide">Göster</button>
 
-  <div id="guide">
+  <div class="guide-card" id="guide">
     Lütfen bir hafta seçin.
   </div>
 
   <div class="download-section">
-    <p>Daha detaylı bilgiler için</p>
-    <a href="https://onelink.to/ucy3z8" target="_blank"><button>Lavli'yi İndir</button></a>
+    <p>Daha detaylı bilgiler için :</p>
+    <a href="https://onelink.to/ucy3z8" target="_blank">
+      <button>Lavli'yi İndir</button>
+    </a>
   </div>
 </div>
 
@@ -121,11 +169,10 @@ button {
 </div>
 
 <script>
-// Örnek case verileri
 const guides = {
-  case1: "1. Hafta Rehberi:\n- Rahim hazırlanıyor.\n- Hormonal değişimler başlıyor.\n- Hafif yorgunluk normaldir.\n\n(Dilersen buraya detaylı bilgiyi ekleyebilirsin)",
-  case2: "2. Hafta Rehberi:\n- Yumurtlama için hazırlık.\n- Hormonlar artıyor.\n- Beslenmeye dikkat edilmeli.\n\n(Burada ikinci haftayı doldurabilirsin)"
-  // case3 - case40 sen dolduracaksın
+  case1: "Gebeliğin 1. Haftası:\n- Rahim hazırlık aşamasında.\n- Hormonal değişimler başlıyor.\n- Hafif yorgunluk ve duygu dalgalanmaları olabilir.\n\n(Dilersen buraya detaylı rehber metnini ekleyebilirsin)",
+  case2: "Gebeliğin 2. Haftası:\n- Yumurtlama dönemine yaklaşılmıştır.\n- Hormon seviyeleri artar.\n- Sağlıklı beslenme ve dinlenme önemlidir.\n\n(Burada ikinci haftanın detayını ekleyebilirsin)"
+  // case3-case40 formatını aynı şekilde ekle
 };
 
 document.getElementById('showGuide').addEventListener('click', function() {
