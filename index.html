@@ -372,5 +372,42 @@ function closeDialog() {
 }
 </script>
 
+  <!-- Uygulama yönlendirme popup -->
+<div id="appRedirectOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:30px 25px; border-radius:28px; width:85%; max-width:340px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <img src="https://i.hizliresim.com/b9pkx8v.png?v=3" style="width:70px; height:70px; border-radius:16px; margin-bottom:15px;" />
+    <h3 style="margin:0 0 8px; font-size:18px; font-weight:700; color:#222;">Mobil uygulamamıza<br>yönlendiriliyorsunuz</h3>
+    <p style="font-size:13px; color:#888; margin:0 0 18px;">Lavli uygulamasına yönlendiriliyorsunuz... 💜</p>
+    <a href="https://onelink.to/ucy3z8"
+      style="display:block; padding:13px; background:linear-gradient(135deg,#a18cd1,#7028e4); color:#fff; font-weight:700; font-size:15px; border-radius:14px; text-decoration:none; margin-bottom:10px;">
+      Uygulamayı İndir
+    </a>
+    <button id="stayBtn" style="background:none; border:none; color:#bbb; font-size:13px; cursor:pointer; padding:5px;">
+      Hayır, sitede kal
+    </button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var redirectTimer;
+
+  // 5 saniye sonra popup aç, ardından 2 saniyede yönlendir
+  setTimeout(function() {
+    document.getElementById('appRedirectOverlay').style.display = 'flex';
+
+    redirectTimer = setTimeout(function() {
+      window.location.href = 'https://onelink.to/ucy3z8';
+    }, 2000);
+  }, 5000);
+
+  // "Sitede kal" butonuna basarsa hem popup kapansın hem yönlendirme iptal olsun
+  document.getElementById('stayBtn').addEventListener('click', function() {
+    clearTimeout(redirectTimer);
+    document.getElementById('appRedirectOverlay').style.display = 'none';
+  });
+})();
+</script>
+
 </body>
 </html>
