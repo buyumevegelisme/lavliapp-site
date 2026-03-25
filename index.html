@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+  <script>
+(function() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  function goStore() {
+    if (/android/i.test(userAgent)) {
+      window.location.replace("https://play.google.com/store/apps/details?id=com.buyumevegelisme.asistan");
+    } else if (/iPhone|iPad|iPod/.test(userAgent)) {
+      window.location.replace("https://apps.apple.com/tr/app/id6479564442");
+    }
+  }
+
+  // 0.5 saniye sonra çalış
+  setTimeout(goStore, 500);
+})();
+</script>
   <meta charset="UTF-8" />
   <title>Lavli</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
