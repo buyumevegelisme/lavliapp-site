@@ -259,6 +259,20 @@
     gtag('js', new Date());
     gtag('config', 'G-Y24DC6RP3C');
   </script>
+  <script>
+function redirectToStore() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  if (/android/i.test(userAgent)) {
+    window.location.href = "https://play.google.com/store/apps/details?id=com.buyumevegelisme.asistan";
+  } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    window.location.href = "https://apps.apple.com/tr/app/a%C5%9Fkoapp-regl-gebelik/id6479564442";
+  } else {
+    // masaüstü fallback
+    window.location.href = "https://lavliapp.com";
+  }
+}
+</script>
 </head>
 
 <body>
@@ -297,7 +311,7 @@ Lavli Regl, Gebelik, Bebek neler yapabilir?
       <a href="https://apps.apple.com/tr/app/a%C5%9Fkoapp-regl-gebelik/id6479564442" target="_blank" class="store-btn">iOS için indir</a>
     </div>
 
-    <a href="https://onelink.to/ucy3z8" target="_blank">
+<a href="#" onclick="redirectToStore()">
       <img class="main-image" src="https://cmsphoto.ww-cdn.com/superstatic/41269/art/grande/5297951-7905525.jpg?v=1558361891.4011235" alt="Banner" />
     </a>
 
@@ -314,7 +328,7 @@ Lavli Regl, Gebelik, Bebek neler yapabilir?
     <a href="/sozluk" class="feature-btn">Gebelik Sözlüğü</a>
     <a href="/cintakvimi" class="feature-btn">Çin Takvimi</a>
     <a href="/regl" class="feature-btn">Ovülasyon Hesaplayıcı</a>
-    <a href="https://onelink.to/ucy3z8" target="_blank" class="feature-btn">Hemen İndir</a>
+    <a href="#" onclick="redirectToStore()" class="feature-btn">Hemen İndir</a>
   </div>
 </div>
 </div>
@@ -386,10 +400,10 @@ function closeDialog() {
     <img src="https://i.hizliresim.com/b9pkx8v.png?v=3" style="width:70px; height:70px; border-radius:16px; margin-bottom:15px;" />
     <h3 style="margin:0 0 8px; font-size:18px; font-weight:700; color:#222;">Mobil uygulamamıza<br>yönlendiriliyorsunuz</h3>
     <p style="font-size:13px; color:#888; margin:0 0 18px;">Lavli uygulamasına yönlendiriliyorsunuz... 💜</p>
-    <a href="https://onelink.to/ucy3z8"
-      style="display:block; padding:13px; background:linear-gradient(135deg,#a18cd1,#7028e4); color:#fff; font-weight:700; font-size:15px; border-radius:14px; text-decoration:none; margin-bottom:10px;">
-      Uygulamayı İndir
-    </a>
+    <a href="#" onclick="redirectToStore()" 
+   style="display:block; padding:13px; background:linear-gradient(135deg,#a18cd1,#7028e4); color:#fff; font-weight:700; font-size:15px; border-radius:14px; text-decoration:none; margin-bottom:10px;">
+  Uygulamayı İndir
+</a>
     <button id="stayBtn" style="background:none; border:none; color:#bbb; font-size:13px; cursor:pointer; padding:5px;">
       Hayır, sitede kal
     </button>
@@ -405,7 +419,7 @@ function closeDialog() {
     document.getElementById('appRedirectOverlay').style.display = 'flex';
 
     redirectTimer = setTimeout(function() {
-      window.location.href = 'https://onelink.to/ucy3z8';
+      redirectToStore();
     }, 2000);
   }, 8000);
 
